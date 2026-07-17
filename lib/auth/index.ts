@@ -10,6 +10,7 @@ function createAuth() {
     appName: "Taghmesa Store",
     secret: process.env.BETTER_AUTH_SECRET ?? process.env.SESSION_SECRET,
     baseURL: process.env.BETTER_AUTH_URL,
+    trustedOrigins: ["https://www.taghmeesa.sa"],
     database: drizzleAdapter(getDb(), {
       provider: "pg",
       schema,
