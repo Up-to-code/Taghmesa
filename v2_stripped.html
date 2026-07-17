@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تغميسة — Dips & More</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --teal:#0095A7;--deep:#006E7A;--fresh:#00A8B8;
+  --aqua:#EAFBFA;--char:#263033;--cream:#EFE1C7;
+  --sage:#AFC8A5;--clay:#C88666;--white:#fff;
+  --gray:#f3f6f7;--border:#dde8ea;--text2:#6a7d82;
+  --ink:#263033;--surface:#fff;
+}
+[data-theme="dark"]{
+  --teal:#12b3c4;--deep:#0d8f9c;--fresh:#22cbdb;
+  --aqua:#0e1a1d;--char:#eaf3f4;--cream:#3a3226;
+  --sage:#7fae72;--clay:#d99a76;
+  --gray:#182428;--border:#3f5761;--text2:#93acb1;
+  --surface:#152227;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Tajawal',sans-serif;background:var(--aqua);color:var(--char);min-height:100vh;-webkit-font-smoothing:antialiased;transition:background-color .3s ease,color .3s ease}
+.ico svg{width:100%;height:100%;display:block}
+
+/* ══ NAVBAR ══ */
+.navbar{background:var(--surface);box-shadow:0 1px 18px rgba(0,149,167,.1);position:sticky;top:0;z-index:300}
+.nav-inner{max-width:1300px;margin:0 auto;padding:0 24px;height:70px;display:flex;align-items:center;gap:16px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;cursor:pointer}
+.nav-logo img{width:50px;height:50px;object-fit:contain}
+.nav-brand-en{font-size:15px;font-weight:900;letter-spacing:2px;color:var(--char);line-height:1}
+.nav-brand-sub{font-size:9px;color:var(--teal);font-weight:700;letter-spacing:2px}
+.nav-search{flex:1;max-width:340px;background:var(--gray);border:1.5px solid transparent;border-radius:28px;padding:0 16px;height:42px;display:flex;align-items:center;gap:8px;transition:.2s}
+.nav-search:focus-within{border-color:var(--teal);background:var(--surface)}
+.nav-search input{background:none;border:none;outline:none;font-family:'Tajawal',sans-serif;font-size:14px;color:var(--char);width:100%;direction:rtl}
+.nav-links{display:flex;gap:2px;margin-right:auto}
+.nav-link{background:none;border:none;padding:8px 14px;font-family:'Tajawal',sans-serif;font-size:14px;font-weight:700;color:var(--text2);cursor:pointer;border-radius:10px;transition:.15s}
+.nav-link:hover,.nav-link.active{background:rgba(0,149,167,.09);color:var(--teal)}
+.nav-cart{background:var(--teal);color:var(--white);border:none;border-radius:14px;padding:0 20px;height:42px;font-family:'Tajawal',sans-serif;font-size:14px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:8px;transition:.2s;white-space:nowrap;flex-shrink:0}
+.nav-cart:hover{background:var(--deep)}
+.cart-badge{background:var(--clay);border-radius:50%;width:22px;height:22px;display:none;align-items:center;justify-content:center;font-size:11px;font-weight:900}
+.cart-badge.show{display:flex}
+.mob-btn{display:none;background:none;border:none;cursor:pointer;color:var(--char);padding:4px}
+.mob-nav{display:none;position:fixed;inset:0;z-index:400;background:var(--surface);padding:20px 24px;flex-direction:column;gap:6px}
+.mob-nav.open{display:flex}
+.mob-close{align-self:flex-start;background:none;border:none;cursor:pointer;color:var(--char);padding:4px;margin-bottom:10px}
+.mob-link{background:none;border:none;padding:14px 16px;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:700;color:var(--char);cursor:pointer;border-radius:14px;text-align:right;transition:.15s;display:flex;align-items:center;gap:10px}
+.mob-link:hover{background:var(--aqua);color:var(--teal)}
+
+/* ══ PAGE SYSTEM ══ */
+.page{display:none}.page.active{display:block}
+
+/* ══ HERO ══ */
+.hero{background:linear-gradient(135deg,var(--deep) 0%,var(--teal) 55%,var(--fresh) 100%);padding:76px 24px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 15% 55%,rgba(255,255,255,.06),transparent 55%),radial-gradient(ellipse at 88% 18%,rgba(255,255,255,.08),transparent 50%)}
+.hero-eye{font-size:11px;color:rgba(255,255,255,.58);letter-spacing:4px;font-weight:700;margin-bottom:18px;position:relative}
+.hero h1{font-size:clamp(32px,6vw,58px);font-weight:900;color:var(--white);line-height:1.15;margin-bottom:18px;position:relative}
+.hero h1 em{color:#7ff5ff;font-style:normal}
+.hero p{font-size:16px;color:rgba(255,255,255,.82);max-width:520px;margin:0 auto 36px;line-height:1.85;position:relative}
+.hero-btns{display:inline-flex;gap:12px;flex-wrap:wrap;justify-content:center;position:relative}
+.btn-w{background:var(--white);color:var(--teal);border:none;border-radius:14px;padding:13px 28px;font-family:'Tajawal',sans-serif;font-size:15px;font-weight:800;cursor:pointer;transition:.22s;display:inline-flex;align-items:center;gap:8px}
+.btn-w:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,.18)}
+.btn-o{background:transparent;color:var(--white);border:2px solid rgba(255,255,255,.45);border-radius:14px;padding:13px 28px;font-family:'Tajawal',sans-serif;font-size:15px;font-weight:800;cursor:pointer;transition:.2s;display:inline-flex;align-items:center;gap:8px}
+.btn-o:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.9)}
+
+/* FEATURES */
+.features{max-width:1300px;margin:0 auto;padding:56px 24px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:18px}
+.feat{background:var(--surface);border-radius:20px;padding:28px 20px;text-align:center;box-shadow:0 2px 14px rgba(0,149,167,.06);transition:.22s}
+.feat:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,149,167,.12)}
+.feat-ring{width:60px;height:60px;border-radius:18px;background:linear-gradient(135deg,rgba(0,149,167,.12),rgba(0,149,167,.06));display:flex;align-items:center;justify-content:center;margin:0 auto 16px;color:var(--teal)}
+.feat-title{font-size:15px;font-weight:900;color:var(--char);margin-bottom:7px}
+.feat-desc{font-size:13px;color:var(--text2);line-height:1.65}
+
+/* HOME CATS */
+.home-sec{max-width:1300px;margin:0 auto;padding:56px 24px 0}
+.sec-hd{display:flex;align-items:center;gap:14px;margin-bottom:28px}
+.sec-hd h2{font-size:22px;font-weight:900;color:var(--char);white-space:nowrap}
+.sec-hd::after{content:'';flex:1;height:2px;background:linear-gradient(to left,transparent,var(--teal))}
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:18px}
+.cat-card{border-radius:22px;padding:34px 20px;text-align:center;cursor:pointer;transition:.24s;display:block;border:none;font-family:'Tajawal',sans-serif;position:relative;overflow:hidden}
+.cat-card::before{content:'';position:absolute;inset:0;background:rgba(0,0,0,0);transition:.22s}
+.cat-card:hover{transform:translateY(-5px);box-shadow:0 16px 36px rgba(0,0,0,.15)}
+.cat-card:hover::before{background:rgba(0,0,0,.06)}
+.cat-ico-ring{width:68px;height:68px;background:rgba(255,255,255,.18);border-radius:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;color:var(--white);backdrop-filter:blur(4px)}
+.cat-name{font-size:17px;font-weight:900;color:var(--white);margin-bottom:5px}
+.cat-count{font-size:12px;color:rgba(255,255,255,.72);font-weight:600}
+
+/* FEATURED SECTION */
+.home-featured{max-width:1300px;margin:0 auto;padding:56px 24px 68px}
+
+/* ══ PRODUCTS GRID ══ */
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:22px}
+
+/* ══ CARD ══ */
+.card{background:var(--surface);border-radius:22px;overflow:hidden;box-shadow:0 2px 14px rgba(0,149,167,.07);display:flex;flex-direction:column;transition:.24s}
+.card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,149,167,.14)}
+.card-img-wrap{position:relative;height:204px;overflow:hidden;cursor:zoom-in;flex-shrink:0}
+.card-img{width:100%;height:100%;object-fit:cover;display:block;transition:.36s}
+.card-img-wrap:hover .card-img{transform:scale(1.05)}
+.zoom-chip{position:absolute;top:10px;left:10px;background:rgba(0,0,0,.42);backdrop-filter:blur(6px);color:#fff;border-radius:20px;padding:5px 10px;font-size:11px;font-weight:700;display:flex;align-items:center;gap:5px;opacity:0;transition:.22s;pointer-events:none}
+.card-img-wrap:hover .zoom-chip{opacity:1}
+.card-placeholder{height:204px;display:flex;align-items:center;justify-content:center;font-size:68px;flex-shrink:0}
+.card-body{padding:16px 18px 20px;flex:1;display:flex;flex-direction:column;gap:9px}
+.cat-tag{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:800;padding:3px 10px;border-radius:20px;color:var(--white);background:var(--teal);align-self:flex-start;letter-spacing:.4px}
+.card-tags{display:flex;gap:6px;align-items:center}
+.new-tag{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:800;padding:3px 10px;border-radius:20px;color:var(--white);background:var(--clay);letter-spacing:.4px}
+.card-name{font-size:18px;font-weight:900;color:var(--char);line-height:1.2}
+.card-en{font-size:11px;color:var(--teal);font-weight:600;letter-spacing:.4px;margin-top:-5px}
+.card-desc{font-size:13px;color:var(--text2);line-height:1.75;flex:1}
+.sizes-lbl{font-size:10px;font-weight:800;color:#b0c4c8;letter-spacing:1px}
+.sizes{display:flex;flex-wrap:wrap;gap:6px}
+.sz-btn{background:none;border:1.5px solid var(--border);border-radius:12px;padding:7px 13px;font-family:'Tajawal',sans-serif;cursor:pointer;transition:.16s;text-align:center}
+.sz-top{font-size:12px;font-weight:800;color:#6a8088;display:block;line-height:1.3}
+.sz-price{font-size:10px;color:#aab8bc;display:block;font-weight:600}
+.sz-btn:hover{border-color:var(--teal);background:rgba(0,149,167,.04)}
+.sz-btn.on{border-color:var(--teal);background:rgba(0,149,167,.09)}
+.sz-btn.on .sz-top{color:var(--teal)}
+.sz-btn.on .sz-price{color:var(--teal)}
+.card-cal{font-size:11px;color:#c4d0d4;display:flex;align-items:center;gap:5px}
+.card-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:2px}
+.price-big{font-size:24px;font-weight:900;color:var(--char);line-height:1}
+.price-sar{font-size:12px;color:#aab8bc;margin-right:3px;font-weight:600}
+.add-btn{background:var(--teal);color:var(--white);border:none;border-radius:12px;padding:0 16px;height:40px;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:800;cursor:pointer;transition:.18s;white-space:nowrap;display:flex;align-items:center;gap:6px}
+.add-btn:hover{background:var(--deep)}
+.add-btn.added{background:var(--sage)}
+
+/* ══ SHOP ══ */
+.shop-wrap{max-width:1300px;margin:0 auto;padding:36px 24px 80px;display:grid;grid-template-columns:228px 1fr;gap:28px;align-items:start}
+.sidebar{display:flex;flex-direction:column;gap:16px;position:sticky;top:86px}
+.sbox{background:var(--surface);border-radius:18px;padding:20px;box-shadow:0 2px 12px rgba(0,149,167,.05)}
+.sbox-t{font-size:12px;font-weight:900;color:var(--char);margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--aqua);letter-spacing:.8px}
+.flt{display:flex;align-items:center;gap:9px;width:100%;background:none;border:none;padding:9px 12px;border-radius:12px;font-family:'Tajawal',sans-serif;font-size:14px;font-weight:600;color:var(--text2);cursor:pointer;transition:.15s}
+.flt:hover{background:var(--aqua);color:var(--teal)}
+.flt.on{background:rgba(0,149,167,.1);color:var(--teal);font-weight:800}
+.flt-n{margin-right:auto;background:var(--aqua);color:var(--teal);font-size:11px;font-weight:800;border-radius:10px;padding:2px 8px;min-width:24px;text-align:center}
+.flt.on .flt-n{background:var(--teal);color:var(--white)}
+.price-wr{display:flex;flex-direction:column;gap:10px}
+.price-row{display:flex;gap:8px}
+.p-in{width:100%;border:1.5px solid var(--border);border-radius:12px;padding:9px 10px;font-family:'Tajawal',sans-serif;font-size:13px;color:var(--char);outline:none;direction:rtl;text-align:center;background:var(--gray);transition:.2s}
+.p-in:focus{border-color:var(--teal);background:var(--surface)}
+.apply-btn{width:100%;background:var(--teal);color:var(--white);border:none;border-radius:12px;padding:10px;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:800;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center;gap:6px}
+.apply-btn:hover{background:var(--deep)}
+.shop-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;flex-wrap:wrap;gap:10px}
+.res-t{font-size:14px;color:var(--text2);font-weight:600}
+.sort-s{background:var(--surface);border:1.5px solid var(--border);border-radius:12px;padding:9px 14px;font-family:'Tajawal',sans-serif;font-size:13px;color:var(--char);cursor:pointer;outline:none;direction:rtl;transition:.2s}
+.sort-s:focus{border-color:var(--teal)}
+
+/* ══ ABOUT ══ */
+.about-hero{background:linear-gradient(135deg,var(--deep),var(--teal));padding:80px 24px;text-align:center;color:var(--white)}
+.about-hero h1{font-size:clamp(28px,5vw,50px);font-weight:900;margin-bottom:14px}
+.about-hero p{font-size:16px;color:rgba(255,255,255,.82);max-width:560px;margin:0 auto;line-height:1.85}
+.about-main{max-width:1060px;margin:0 auto;padding:64px 24px}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+.about-img{border-radius:24px;overflow:hidden;box-shadow:0 18px 52px rgba(0,149,167,.18)}
+.about-img img{width:100%;display:block}
+.about-txt h2{font-size:26px;font-weight:900;color:var(--char);margin-bottom:16px}
+.about-txt p{font-size:15px;color:var(--text2);line-height:1.9;margin-bottom:14px}
+.nums-bar{background:var(--teal);padding:52px 24px}
+.nums-grid{max-width:860px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:28px;text-align:center}
+.num-v{font-size:42px;font-weight:900;color:var(--white);line-height:1}
+.num-l{font-size:13px;color:rgba(255,255,255,.72);margin-top:7px;font-weight:600}
+.vals-sec{max-width:1060px;margin:0 auto;padding:0 24px 64px}
+.vals-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:18px;margin-top:28px}
+.val-c{background:var(--surface);border-radius:18px;padding:26px 18px;text-align:center;box-shadow:0 2px 12px rgba(0,149,167,.06);transition:.2s}
+.val-c:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,149,167,.12)}
+.val-ico{width:54px;height:54px;background:linear-gradient(135deg,rgba(0,149,167,.12),rgba(0,149,167,.05));border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;color:var(--teal)}
+.val-name{font-size:14px;font-weight:900;color:var(--char);margin-bottom:6px}
+.val-desc{font-size:12px;color:#8a9da3;line-height:1.6}
+
+/* ══ CONTACT ══ */
+.contact-hero{background:linear-gradient(135deg,var(--deep),var(--teal));padding:64px 24px;text-align:center;color:var(--white)}
+.contact-hero h1{font-size:clamp(26px,4vw,44px);font-weight:900;margin-bottom:12px}
+.contact-hero p{font-size:15px;color:rgba(255,255,255,.82);max-width:480px;margin:0 auto;line-height:1.8}
+.contact-body{max-width:1060px;margin:0 auto;padding:56px 24px 80px;display:grid;grid-template-columns:1fr 1.2fr;gap:44px;align-items:start}
+.cinfo{display:flex;flex-direction:column;gap:14px}
+.ccard{background:var(--surface);border-radius:18px;padding:20px;display:flex;align-items:flex-start;gap:14px;box-shadow:0 2px 10px rgba(0,149,167,.05)}
+.ccard-ico{width:46px;height:46px;background:linear-gradient(135deg,rgba(0,149,167,.12),rgba(0,149,167,.05));border-radius:14px;display:flex;align-items:center;justify-content:center;color:var(--teal);flex-shrink:0}
+.ccard-t{font-size:12px;font-weight:900;color:var(--char);margin-bottom:4px;letter-spacing:.3px}
+.ccard-v{font-size:14px;color:var(--text2);line-height:1.6}
+.socials{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.soc-btn{display:inline-flex;align-items:center;gap:7px;background:rgba(0,149,167,.08);border-radius:12px;padding:9px 14px;font-size:13px;font-weight:700;color:var(--teal);text-decoration:none;border:none;font-family:'Tajawal',sans-serif;cursor:pointer;transition:.15s}
+.soc-btn:hover{background:var(--teal);color:var(--white)}
+.cform{background:var(--surface);border-radius:22px;padding:32px 28px;box-shadow:0 4px 24px rgba(0,149,167,.08)}
+.cform h3{font-size:18px;font-weight:900;color:var(--char);margin-bottom:22px}
+.fg{margin-bottom:15px}
+.flbl{font-size:12px;font-weight:800;color:var(--text2);margin-bottom:6px;display:block;letter-spacing:.3px}
+.finput,.ftarea,.fselect{width:100%;border:1.5px solid var(--border);border-radius:14px;padding:12px 14px;font-family:'Tajawal',sans-serif;font-size:14px;color:var(--char);outline:none;transition:.2s;direction:rtl;background:var(--gray)}
+.finput:focus,.ftarea:focus,.fselect:focus{border-color:var(--teal);background:var(--surface)}
+.ftarea{resize:vertical;min-height:110px}
+.fsub{width:100%;background:var(--teal);color:var(--white);border:none;border-radius:14px;padding:14px;font-family:'Tajawal',sans-serif;font-size:15px;font-weight:900;cursor:pointer;transition:.2s;margin-top:4px;display:flex;align-items:center;justify-content:center;gap:8px}
+.fsub:hover{background:var(--deep)}
+.f-ok{display:none;background:#e8faf4;border:1.5px solid #48c78e;border-radius:14px;padding:14px 18px;text-align:center;color:#1a7a4e;font-weight:700;font-size:14px;margin-top:12px;align-items:center;justify-content:center;gap:8px}
+
+/* ══ CHECKOUT ══ */
+.checkout-hero{background:linear-gradient(135deg,var(--deep),var(--teal));padding:40px 24px;text-align:center;color:var(--white)}
+.checkout-hero h1{font-size:28px;font-weight:900;margin-bottom:8px}
+.checkout-hero p{font-size:14px;color:rgba(255,255,255,.72)}
+.co-body{max-width:1060px;margin:0 auto;padding:36px 24px 80px;display:grid;grid-template-columns:1.4fr 1fr;gap:28px;align-items:start}
+.co-box{background:var(--surface);border-radius:20px;padding:28px;box-shadow:0 4px 20px rgba(0,149,167,.07)}
+.co-box-t{font-size:17px;font-weight:900;color:var(--char);margin-bottom:20px;display:flex;align-items:center;gap:10px;padding-bottom:14px;border-bottom:2px solid var(--aqua)}
+.co-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pay-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.pay-opt{border:1.5px solid var(--border);border-radius:14px;padding:14px 8px;cursor:pointer;text-align:center;transition:.16s;display:flex;flex-direction:column;align-items:center;gap:7px;font-family:'Tajawal',sans-serif;font-size:12px;font-weight:700;color:var(--text2);background:var(--gray)}
+.pay-opt:hover{border-color:var(--teal);color:var(--teal);background:rgba(0,149,167,.04)}
+.pay-opt.on{border-color:var(--teal);background:rgba(0,149,167,.09);color:var(--teal)}
+.pay-ico{width:36px;height:36px;background:rgba(0,149,167,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--teal)}
+.co-summary{display:flex;flex-direction:column;gap:16px}
+.co-items-list{display:flex;flex-direction:column;gap:0}
+.co-item{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--aqua)}
+.co-item:last-child{border-bottom:none}
+.co-emoji{font-size:22px;width:38px;text-align:center}
+.co-iname{flex:1;font-size:13px;font-weight:700;color:var(--char)}
+.co-ivar{font-size:11px;color:#aab8bc}
+.co-iprice{font-size:13px;font-weight:800;color:var(--teal)}
+.co-lines{margin-top:14px;padding-top:14px;border-top:1px solid var(--aqua)}
+.co-line{display:flex;justify-content:space-between;font-size:13px;color:var(--text2);margin-bottom:8px}
+.co-total-row{display:flex;justify-content:space-between;font-size:20px;font-weight:900;margin-top:10px;padding-top:10px;border-top:2px solid var(--aqua)}
+.co-total-val{color:var(--teal)}
+.place-btn{width:100%;background:var(--teal);color:var(--white);border:none;border-radius:14px;padding:16px;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:900;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center;gap:10px}
+.place-btn:hover{background:var(--deep)}
+.secure-note{display:flex;align-items:center;gap:6px;justify-content:center;font-size:12px;color:#b0c8cc;margin-top:10px}
+.order-ok{text-align:center;padding:72px 24px;max-width:560px;margin:0 auto}
+.ok-ring{width:100px;height:100px;background:linear-gradient(135deg,var(--sage),var(--teal));border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;color:var(--white)}
+.ok-title{font-size:30px;font-weight:900;color:var(--char);margin-bottom:12px}
+.ok-sub{font-size:15px;color:var(--text2);line-height:1.8;margin-bottom:28px}
+.ok-num{background:var(--aqua);border-radius:14px;padding:14px 22px;font-size:15px;font-weight:700;color:var(--teal);margin-bottom:28px;display:inline-block}
+
+/* ══ POLICY ══ */
+.pol-hero{background:linear-gradient(135deg,var(--deep),var(--teal));padding:56px 24px;text-align:center;color:var(--white)}
+.pol-hero h1{font-size:clamp(24px,4vw,40px);font-weight:900;margin-bottom:8px}
+.pol-hero p{font-size:13px;color:rgba(255,255,255,.6);margin-top:8px}
+.pol-body{max-width:820px;margin:0 auto;padding:48px 24px 80px}
+.pol-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px;background:var(--surface);border-radius:18px;padding:14px;box-shadow:0 2px 12px rgba(0,149,167,.06)}
+.pol-tab{flex:1;background:none;border:none;border-radius:12px;padding:11px 12px;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;color:var(--text2);cursor:pointer;transition:.15s;display:flex;align-items:center;gap:7px;justify-content:center;white-space:nowrap}
+.pol-tab:hover{background:var(--aqua);color:var(--teal)}
+.pol-tab.on{background:var(--teal);color:var(--white)}
+.pol-sec{display:none}.pol-sec.on{display:block}
+.pol-card{background:var(--surface);border-radius:18px;padding:26px;margin-bottom:14px;box-shadow:0 2px 10px rgba(0,149,167,.05)}
+.pol-h{font-size:16px;font-weight:900;color:var(--char);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.pol-p{font-size:14px;color:var(--text2);line-height:1.9;margin-bottom:10px}
+.pol-p:last-child{margin-bottom:0}
+.pol-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+.pol-list li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text2);line-height:1.7}
+.pol-list li .ico{flex-shrink:0;margin-top:1px}
+.li-check{color:var(--teal)}
+.li-warn{color:#e07070}
+
+/* ══ CART ══ */
+.cart-ov{position:fixed;inset:0;z-index:500;display:none}
+.cart-ov.open{display:flex}
+.cart-back{flex:1;background:rgba(0,0,0,.45);backdrop-filter:blur(4px)}
+.cart-draw{width:390px;background:var(--surface);height:100%;display:flex;flex-direction:column;box-shadow:-10px 0 44px rgba(0,0,0,.14);direction:rtl;animation:sIn .28s ease}
+@keyframes sIn{from{transform:translateX(100%)}to{transform:translateX(0)}}
+.cart-hd{padding:20px;border-bottom:2px solid var(--aqua);display:flex;align-items:center;justify-content:space-between}
+.cart-title{font-size:18px;font-weight:900;color:var(--char);display:flex;align-items:center;gap:10px}
+.cx{background:none;border:none;cursor:pointer;color:#bbb;padding:6px;border-radius:10px;display:flex;transition:.15s}
+.cx:hover{background:var(--gray);color:var(--char)}
+.cart-items-w{flex:1;overflow-y:auto;padding:8px 20px}
+.cart-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:14px}
+.cart-empty-ring{width:76px;height:76px;background:var(--aqua);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#b0cdd4}
+.c-item{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--aqua)}
+.c-ico{width:48px;height:48px;background:var(--aqua);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.c-info{flex:1}
+.c-name{font-size:14px;font-weight:800;color:var(--char)}
+.c-var{font-size:11px;color:#aab8bc;margin-top:2px}
+.c-price{font-size:13px;color:var(--teal);font-weight:800;margin-top:4px}
+.c-qty{display:flex;align-items:center;gap:8px;margin-top:7px}
+.qb{background:var(--aqua);border:none;border-radius:8px;width:26px;height:26px;cursor:pointer;color:var(--char);display:flex;align-items:center;justify-content:center;transition:.15s}
+.qb:hover{background:rgba(0,149,167,.18)}
+.qn{font-size:13px;font-weight:900;color:var(--char);min-width:20px;text-align:center}
+.c-del{background:none;border:none;cursor:pointer;color:#ccc;padding:5px;border-radius:9px;display:flex;transition:.15s}
+.c-del:hover{background:#fff0f0;color:#e55}
+.cart-ft{padding:18px 20px;border-top:2px solid var(--aqua)}
+.cart-sub{display:flex;justify-content:space-between;font-size:13px;color:#aab8bc;margin-bottom:6px}
+.cart-tot{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.cart-tot-l{font-size:16px;font-weight:900;color:var(--char)}
+.cart-tot-v{font-size:24px;font-weight:900;color:var(--teal)}
+.co-btn{width:100%;background:var(--teal);color:var(--white);border:none;border-radius:14px;padding:14px;font-family:'Tajawal',sans-serif;font-size:16px;font-weight:900;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center;gap:8px}
+.co-btn:hover{background:var(--deep)}
+.clr-btn{width:100%;background:none;border:none;color:#c0cdd0;font-family:'Tajawal',sans-serif;font-size:13px;cursor:pointer;padding:9px;margin-top:3px}
+
+/* ══ LIGHTBOX ══ */
+.lb{position:fixed;inset:0;z-index:900;display:none;align-items:center;justify-content:center}
+.lb.open{display:flex}
+.lb-bg{position:absolute;inset:0;background:rgba(0,0,0,.92);backdrop-filter:blur(14px);animation:fIn .25s}
+@keyframes fIn{from{opacity:0}to{opacity:1}}
+.lb-box{position:relative;z-index:1;max-width:92vw;max-height:92vh;display:flex;flex-direction:column;align-items:center;gap:14px;animation:zIn .3s cubic-bezier(.34,1.56,.64,1)}
+@keyframes zIn{from{opacity:0;transform:scale(.78)}to{opacity:1;transform:scale(1)}}
+.lb-img{max-width:88vw;max-height:76vh;border-radius:18px;object-fit:contain;display:block;box-shadow:0 32px 80px rgba(0,0,0,.65)}
+.lb-cap{color:rgba(255,255,255,.92);font-size:17px;font-weight:800;text-align:center}
+.lb-capen{color:rgba(255,255,255,.48);font-size:12px;text-align:center;margin-top:2px}
+.lb-cls{position:fixed;top:18px;left:18px;background:rgba(255,255,255,.1);border:none;border-radius:50%;width:44px;height:44px;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s;z-index:2;backdrop-filter:blur(4px)}
+.lb-cls:hover{background:rgba(255,255,255,.24)}
+.lb-arr{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.1);border:none;border-radius:50%;width:50px;height:50px;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s;z-index:2;backdrop-filter:blur(4px)}
+.lb-arr:hover{background:rgba(255,255,255,.24)}
+.lb-prev{right:18px}.lb-next{left:18px}
+.lb-dots{display:flex;gap:8px;justify-content:center}
+.lb-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3);border:none;cursor:pointer;transition:.2s}
+.lb-dot.on{background:var(--teal);transform:scale(1.4)}
+
+/* ══ FOOTER ══ */
+.footer{background:var(--ink);padding:52px 24px 28px}
+.footer-inner{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
+.footer-brand img{width:54px;margin-bottom:14px}
+.fbrand-name{font-size:16px;font-weight:900;color:var(--white);letter-spacing:1px;margin-bottom:8px}
+.fbrand-desc{font-size:13px;color:rgba(255,255,255,.36);line-height:1.75}
+.fcol-t{font-size:11px;font-weight:900;color:rgba(255,255,255,.46);letter-spacing:1.5px;margin-bottom:16px}
+.flink{display:block;font-size:13px;color:rgba(255,255,255,.4);text-decoration:none;margin-bottom:10px;transition:.15s;cursor:pointer;background:none;border:none;font-family:'Tajawal',sans-serif;text-align:right;padding:0}
+.flink:hover{color:var(--teal)}
+.fdiv{border:none;border-top:1px solid rgba(255,255,255,.07);margin:32px auto 20px;max-width:1300px}
+.fbottom{max-width:1300px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.fcopy{font-size:12px;color:rgba(255,255,255,.28)}
+.fteal{color:var(--teal);font-weight:800}
+
+/* ══ TOAST ══ */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--ink);color:#fff;border-radius:16px;padding:14px 20px;font-size:14px;font-weight:700;display:flex;align-items:center;gap:10px;box-shadow:0 10px 28px rgba(0,0,0,.28);z-index:1000;transform:translateY(90px);opacity:0;transition:.34s cubic-bezier(.34,1.56,.64,1)}
+.toast.show{transform:translateY(0);opacity:1}
+.toast-dot{width:9px;height:9px;border-radius:50%;background:var(--sage);flex-shrink:0}
+
+/* ══ RESPONSIVE ══ */
+.hidden{display:none!important}
+@media(max-width:1024px){.footer-inner{grid-template-columns:1fr 1fr}}
+@media(max-width:860px){
+  .nav-links,.nav-search{display:none}
+  .mob-btn{display:flex}
+  .shop-wrap{grid-template-columns:1fr}
+  .sidebar{position:static}
+  .about-grid,.contact-body,.co-body,.co-row{grid-template-columns:1fr}
+  .cart-draw{width:100%}
+}
+@media(max-width:600px){
+  .footer-inner{grid-template-columns:1fr}
+  .pay-grid{grid-template-columns:1fr 1fr}
+  .pol-tabs{flex-direction:column}
+}
+
+.theme-btn{background:var(--gray);border:none;border-radius:12px;width:42px;height:42px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--char);transition:.2s;flex-shrink:0}
+.theme-btn:hover{background:var(--aqua);color:var(--teal)}
+.theme-ico-moon{display:none}
+[data-theme="dark"] .theme-ico-sun{display:none}
+[data-theme="dark"] .theme-ico-moon{display:inline-flex}
+@keyframes pageIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.page.active{animation:pageIn .35s ease}
+@keyframes bump{0%{transform:scale(1)}40%{transform:scale(1.4)}100%{transform:scale(1)}}
+.cart-badge.bump{animation:bump .35s ease}
+.sz-btn{transition:.16s,transform .12s}
+.sz-btn:active{transform:scale(.95)}
+.add-btn:active,.btn-w:active,.btn-o:active,.apply-btn:active,.fsub:active,.place-btn:active,.co-btn:active,.nav-cart:active{transform:scale(.96)}
+.flt:active,.pol-tab:active,.cat-card:active{transform:scale(.98)}
+.card-img-wrap img{transition:.4s}
+</style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <div class="nav-logo" onclick="goPage('home')">
+      <img src="DATAURI" alt="Taghmesa">
+      <div><div class="nav-brand-en">TAGHMESA</div><div class="nav-brand-sub">DIPS & MORE · EST. 2023</div></div>
+    </div>
+    <div class="nav-search">
+      <span class="ico" style="width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></span>
+      <input type="text" id="searchInput" placeholder="ابحث عن منتج..." oninput="onSearch()">
+    </div>
+    <div class="nav-links">
+      <button class="nav-link active" onclick="goPage('home')">الرئيسية</button>
+      <button class="nav-link" onclick="goPage('shop')">المتجر</button>
+      <button class="nav-link" onclick="goPage('about')">من نحن</button>
+      <button class="nav-link" onclick="goPage('contact')">تواصل</button>
+      <button class="nav-link" onclick="goPage('policy')">سياسات</button>
+    </div>
+    <button class="nav-cart" onclick="openCart()">
+      <span class="ico" style="width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg></span> السلة
+      <span class="cart-badge" id="cartBadge">0</span>
+    </button>
+    <button class="mob-btn" onclick="openMob()"><span class="ico" style="width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg></span></button>
+  </div>
+</nav>
+
+<!-- MOB NAV -->
+<div class="mob-nav" id="mobNav">
+  <button class="mob-close" onclick="closeMob()"><span class="ico" style="width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></span></button>
+  <button class="mob-link" onclick="goPage('home');closeMob()"><span class="ico" style="width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></span> الرئيسية</button>
+  <button class="mob-link" onclick="goPage('shop');closeMob()"><span class="ico" style="width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg></span> المتجر</button>
+  <button class="mob-link" onclick="goPage('about');closeMob()"><span class="ico" style="width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></svg></span> من نحن</button>
+  <button class="mob-link" onclick="goPage('contact');closeMob()"><span class="ico" style="width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span> تواصل معنا</button>
+  <button class="mob-link" onclick="goPage('policy');closeMob()"><span class="ico" style="width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8m8 4H8m8 4H8"/></svg></span> سياسات المتجر</button>
+  <button class="mob-link" onclick="openCart();closeMob()"><span class="ico" style="width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg></span> سلة التسوق</button>
+</div>
+
+<!-- ══ HOME ══ -->
+<div class="page active" id="page-home">
+  <section class="hero">
+    <div class="hero-eye">EST. 2023 · DIPS & MORE · SAUDI ARABIA</div>
+    <h1>تغميسة<br><em>نكهات أصيلة</em> للمشاركة</h1>
+    <p>منتجات طازجة وطبيعية — تغميسات وصوصات وأطباق بيتية محضّرة بعناية وحب</p>
+    <div class="hero-btns">
+      <button class="btn-w" onclick="goPage('shop')"><span class="ico" style="width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg></span> تصفح المنتجات</button>
+      <button class="btn-o" onclick="goPage('about')"><span class="ico" style="width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></svg></span> اعرف أكثر</button>
+    </div>
+  </section>
+
+  <div class="features">
+    <div class="feat"><div class="feat-ring"><span class="ico" style="width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22c1.25-1.25 2.208-2.5 2.917-3.75C6 16 6.5 13.5 6 11c-.5-2.5-1-5 2-8 1.5-1.5 3.5-2 6-2s4 1 5 3c1.5 3 1 7-1 9.5S13 17 11 18c-1.5.667-2.833 2-4 4"/><path d="M6 11c2 2 4.5 3 8 2"/></svg></span></div><div class="feat-title">طازج</div><div class="feat-desc">مكونات طازجة يومياً بدون مواد حافظة</div></div>
+    <div class="feat"><div class="feat-ring"><span class="ico" style="width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48 2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48 2.83-2.83"/></svg></span></div><div class="feat-title">طبيعي</div><div class="feat-desc">100% طبيعي بدون إضافات اصطناعية</div></div>
+    <div class="feat"><div class="feat-ring"><span class="ico" style="width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V8a2 2 0 1 0-4 0v3"/><path d="M14 9V5a2 2 0 1 0-4 0v4"/><path d="M10 9.5V5a2 2 0 1 0-4 0v6.5"/><path d="M6 12v1a6 6 0 0 0 6 6h2a6 6 0 0 0 6-6V8a2 2 0 1 0-4 0"/></svg></span></div><div class="feat-title">صنع يدوي</div><div class="feat-desc">محضّر بيد أمينة باهتمام في كل تفصيل</div></div>
+    <div class="feat"><div class="feat-ring"><span class="ico" style="width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.59 13.51 6.83 3.98M15.41 6.51 8.59 10.49"/></svg></span></div><div class="feat-title">قابل للمشاركة</div><div class="feat-desc">مثالي للعائلة والأصدقاء في كل مناسبة</div></div>
+    <div class="feat"><div class="feat-ring"><span class="ico" style="width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></span></div><div class="feat-title">جودة عالية</div><div class="feat-desc">لا نتنازل عن الجودة في أي منتج</div></div>
+  </div>
+
+  <div class="home-sec">
+    <div class="sec-hd"><h2>تصفح حسب الفئة</h2></div>
+    <div class="cat-grid">
+      <button class="cat-card" style="background:linear-gradient(135deg,#0095A7,#005f6b)" onclick="filterAndGo('مطبوخ')">
+        <div class="cat-ico-ring"><span class="ico" style="width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></span></div><div class="cat-name">أطباق مطبوخة</div><div class="cat-count">6 منتجات</div>
+      </button>
+      <button class="cat-card" style="background:linear-gradient(135deg,#5a8a47,#3c6030)" onclick="filterAndGo('غموس')">
+        <div class="cat-ico-ring"><span class="ico" style="width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22c1.25-1.25 2.208-2.5 2.917-3.75C6 16 6.5 13.5 6 11c-.5-2.5-1-5 2-8 1.5-1.5 3.5-2 6-2s4 1 5 3c1.5 3 1 7-1 9.5S13 17 11 18c-1.5.667-2.833 2-4 4"/><path d="M6 11c2 2 4.5 3 8 2"/></svg></span></div><div class="cat-name">غموس وتغميسات</div><div class="cat-count">2 منتجات</div>
+      </button>
+      <button class="cat-card" style="background:linear-gradient(135deg,#C88666,#9a5e3e)" onclick="filterAndGo('حلويات')">
+        <div class="cat-ico-ring"><span class="ico" style="width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></span></div><div class="cat-name">حلويات</div><div class="cat-count">1 منتج</div>
+      </button>
+      <button class="cat-card" style="background:linear-gradient(135deg,#103338,#1a5460)" onclick="filterAndGo('صوصات')">
+        <div class="cat-ico-ring"><span class="ico" style="width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48 2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48 2.83-2.83"/></svg></span></div><div class="cat-name">صوصات</div><div class="cat-count">2 منتجات</div>
+      </button>
+    </div>
+  </div>
+
+  <div class="home-featured">
+    <div class="sec-hd"><h2>منتجات مميزة</h2></div>
+    <div class="products-grid" id="featuredGrid"></div>
+  </div>
+</div>
+
+<!-- ══ SHOP ══ -->
+<div class="page" id="page-shop">
+  <div class="shop-wrap">
+    <aside class="sidebar">
+      <div class="sbox">
+        <div class="sbox-t">الفئات</div>
+        <button class="flt on" onclick="setCat('الكل',this)"><span class="ico" style="width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></span> الكل <span class="flt-n">11</span></button>
+        <button class="flt" onclick="setCat('مطبوخ',this)"><span class="ico" style="width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></span> مطبوخ <span class="flt-n">6</span></button>
+        <button class="flt" onclick="setCat('غموس',this)"><span class="ico" style="width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22c1.25-1.25 2.208-2.5 2.917-3.75C6 16 6.5 13.5 6 11c-.5-2.5-1-5 2-8 1.5-1.5 3.5-2 6-2s4 1 5 3c1.5 3 1 7-1 9.5S13 17 11 18c-1.5.667-2.833 2-4 4"/><path d="M6 11c2 2 4.5 3 8 2"/></svg></span> غموس <span class="flt-n">2</span></button>
+        <button class="flt" onclick="setCat('حلويات',this)"><span class="ico" style="width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></span> حلويات <span class="flt-n">1</span></button>
+        <button class="flt" onclick="setCat('صوصات',this)"><span class="ico" style="width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48 2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48 2.83-2.83"/></svg></span> صوصات <span class="flt-n">2</span></button>
+      </div>
+      <div class="sbox">
+        <div class="sbox-t">نطاق السعر</div>
+        <div class="price-wr">
+          <div class="price-row">
+            <input type="number" class="p-in" id="minP" placeholder="من" value="0">
+            <input type="number" class="p-in" id="maxP" placeholder="إلى" value="200">
+          </div>
+          <button class="apply-btn" onclick="applyPrice()"><span class="ico" style="width:15px;height:15px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> تطبيق</button>
+        </div>
+      </div>
+    </aside>
+    <div>
+      <div class="shop-top">
+        <div class="res-t" id="resTxt">11 منتج</div>
+        <select class="sort-s" id="sortSel" onchange="doSort()">
+          <option value="default">ترتيب افتراضي</option>
+          <option value="price-asc">السعر: الأقل أولاً</option>
+          <option value="price-desc">السعر: الأعلى أولاً</option>
+          <option value="name">الاسم أبجدياً</option>
+        </select>
+      </div>
+      <div class="products-grid" id="shopGrid"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ABOUT ══ -->
+<div class="page" id="page-about">
+  <div class="about-hero">
+    <h1>قصتنا</h1>
+    <p>تغميسة علامة سعودية وُلدت من شغف حقيقي بالطعام البيتي الأصيل، تؤمن بأن أفضل اللحظات تُصنع حول الطاولة</p>
+  </div>
+  <div class="about-main">
+    <div class="about-grid">
+      <div class="about-img"><img src="DATAURI" alt="تعتيمة تغميسة"></div>
+      <div class="about-txt">
+        <h2>من أين بدأنا؟</h2>
+        <p>بدأت تغميسة عام 2023 بفكرة بسيطة: تقديم تغميسات وأطباق بيتية بجودة عالية تحمل نكهة المطبخ الأصيل وتجمع الناس على مائدة واحدة.</p>
+        <p>كل منتج في تغميسة محضّر يدوياً بعناية من مكونات طازجة وطبيعية 100%، بدون مواد حافظة أو إضافات اصطناعية، مع الحرص على الطعم الذي يُذكّرك بمطبخ البيت.</p>
+        <p>اليوم نقدم مجموعة متكاملة من التغميسات والأطباق المطبوخة والحلويات والصوصات، كلها صُنعت بحب وقابلة للمشاركة في أي مناسبة.</p>
+      </div>
+    </div>
+  </div>
+  <div class="nums-bar">
+    <div class="nums-grid">
+      <div><div class="num-v">2023</div><div class="num-l">سنة التأسيس</div></div>
+      <div><div class="num-v">11+</div><div class="num-l">منتج متاح</div></div>
+      <div><div class="num-v">100%</div><div class="num-l">مكونات طبيعية</div></div>
+      <div><div class="num-v">يدوي</div><div class="num-l">صنع يدوي بالكامل</div></div>
+    </div>
+  </div>
+  <div class="vals-sec">
+    <div class="sec-hd" style="max-width:1060px;margin:48px auto 0"><h2>قيمنا</h2></div>
+    <div class="vals-grid">
+      <div class="val-c"><div class="val-ico"><span class="ico" style="width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22c1.25-1.25 2.208-2.5 2.917-3.75C6 16 6.5 13.5 6 11c-.5-2.5-1-5 2-8 1.5-1.5 3.5-2 6-2s4 1 5 3c1.5 3 1 7-1 9.5S13 17 11 18c-1.5.667-2.833 2-4 4"/><path d="M6 11c2 2 4.5 3 8 2"/></svg></span></div><div class="val-name">طازج دائماً</div><div class="val-desc">مكونات طازجة يومياً لا تُقبل التنازل</div></div>
+      <div class="val-c"><div class="val-ico"><span class="ico" style="width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48 2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48 2.83-2.83"/></svg></span></div><div class="val-name">طبيعي 100%</div><div class="val-desc">بدون مواد حافظة أو إضافات اصطناعية</div></div>
+      <div class="val-c"><div class="val-ico"><span class="ico" style="width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V8a2 2 0 1 0-4 0v3"/><path d="M14 9V5a2 2 0 1 0-4 0v4"/><path d="M10 9.5V5a2 2 0 1 0-4 0v6.5"/><path d="M6 12v1a6 6 0 0 0 6 6h2a6 6 0 0 0 6-6V8a2 2 0 1 0-4 0"/></svg></span></div><div class="val-name">صنع يدوي</div><div class="val-desc">كل منتج محضّر بعناية واهتمام بيدوي</div></div>
+      <div class="val-c"><div class="val-ico"><span class="ico" style="width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.59 13.51 6.83 3.98M15.41 6.51 8.59 10.49"/></svg></span></div><div class="val-name">للمشاركة</div><div class="val-desc">طعام يجمع الناس ويصنع اللحظات</div></div>
+      <div class="val-c"><div class="val-ico"><span class="ico" style="width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></span></div><div class="val-name">جودة عالية</div><div class="val-desc">لا نتنازل عن الجودة في أي ظرف</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CONTACT ══ -->
+<div class="page" id="page-contact">
+  <div class="contact-hero">
+    <h1>تواصل معنا</h1>
+    <p>يسعدنا سماعك — سواء كان سؤالاً أو طلباً أو مجرد تحية</p>
+  </div>
+  <div class="contact-body">
+    <div class="cinfo">
+      <div class="ccard"><div class="ccard-ico"><span class="ico" style="width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span></div><div><div class="ccard-t">الموقع</div><div class="ccard-v">المملكة العربية السعودية</div></div></div>
+      <div class="ccard"><div class="ccard-ico"><span class="ico" style="width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span></div><div><div class="ccard-t">واتساب</div><div class="ccard-v" dir="ltr">+966 5X XXX XXXX</div></div></div>
+      <div class="ccard"><div class="ccard-ico"><span class="ico" style="width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span></div><div><div class="ccard-t">البريد الإلكتروني</div><div class="ccard-v" dir="ltr">hello@taghmesa.com</div></div></div>
+      <div class="ccard"><div class="ccard-ico"><span class="ico" style="width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span></div><div><div class="ccard-t">ساعات العمل</div><div class="ccard-v">السبت – الخميس، 10ص – 10م</div></div></div>
+      <div class="ccard"><div class="ccard-ico"><span class="ico" style="width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span></div><div>
+        <div class="ccard-t">تابعنا</div>
+        <div class="socials">
+          <button class="soc-btn"><span class="ico" style="width:14px;height:14px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg></span> Instagram</button>
+          <button class="soc-btn"><span class="ico" style="width:14px;height:14px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l16 16M4 20 20 4"/><path d="M4 4h4l4 6 4-6h4"/><path d="M4 20h4l4-6 4 6h4"/></svg></span> Twitter/X</button>
+          <button class="soc-btn"><span class="ico" style="width:14px;height:14px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></span> TikTok</button>
+        </div>
+      </div></div>
+    </div>
+    <div class="cform">
+      <h3>أرسل رسالة</h3>
+      <div class="fg"><label class="flbl">الاسم الكامل</label><input type="text" class="finput" placeholder="اكتب اسمك"></div>
+      <div class="fg"><label class="flbl">رقم الجوال</label><input type="tel" class="finput" placeholder="05XXXXXXXX" dir="ltr"></div>
+      <div class="fg"><label class="flbl">البريد الإلكتروني</label><input type="email" class="finput" placeholder="email@example.com" dir="ltr"></div>
+      <div class="fg"><label class="flbl">الموضوع</label>
+        <select class="fselect"><option>استفسار عن منتج</option><option>طلب خاص</option><option>شكوى أو ملاحظة</option><option>أخرى</option></select>
+      </div>
+      <div class="fg"><label class="flbl">الرسالة</label><textarea class="ftarea" placeholder="اكتب رسالتك هنا..."></textarea></div>
+      <button class="fsub" onclick="submitForm()"><span class="ico" style="width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span> إرسال الرسالة</button>
+      <div class="f-ok" id="fOk"><span class="ico" style="width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> تم إرسال رسالتك! سنتواصل معك قريباً</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CHECKOUT ══ -->
+<div class="page" id="page-checkout">
+  <div class="checkout-hero">
+    <h1>إتمام الطلب</h1>
+    <p>خطوة واحدة وطلبك في الطريق إليك</p>
+  </div>
+  <div id="coForm" class="co-body">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <div class="co-box">
+        <div class="co-box-t"><span class="ico" style="width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span> بيانات التوصيل</div>
+        <div class="co-row">
+          <div class="fg"><label class="flbl">الاسم الأول</label><input type="text" class="finput" placeholder="الاسم الأول"></div>
+          <div class="fg"><label class="flbl">الاسم الأخير</label><input type="text" class="finput" placeholder="الاسم الأخير"></div>
+        </div>
+        <div class="fg"><label class="flbl">رقم الجوال</label><input type="tel" class="finput" placeholder="05XXXXXXXX" dir="ltr"></div>
+        <div class="fg"><label class="flbl">المدينة</label><input type="text" class="finput" placeholder="الرياض، جدة، الدمام..."></div>
+        <div class="fg"><label class="flbl">العنوان التفصيلي</label><textarea class="ftarea" style="min-height:80px" placeholder="الحي، الشارع، رقم المبنى..."></textarea></div>
+        <div class="fg"><label class="flbl">ملاحظات (اختياري)</label><textarea class="ftarea" style="min-height:70px" placeholder="أي تعليمات خاصة للتوصيل..."></textarea></div>
+      </div>
+      <div class="co-box">
+        <div class="co-box-t"><span class="ico" style="width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></span> طريقة الدفع</div>
+        <div class="pay-grid">
+          <div class="pay-opt on" onclick="selPay(this)"><div class="pay-ico"><span class="ico" style="width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></span></div>بطاقة</div>
+          <div class="pay-opt" onclick="selPay(this)"><div class="pay-ico"><span class="ico" style="width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06z"/><path d="M10 2c1 .5 2 2 2 5"/></svg></span></div>Apple Pay</div>
+          <div class="pay-opt" onclick="selPay(this)"><div class="pay-ico"><span class="ico" style="width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg></span></div>عند الاستلام</div>
+        </div>
+        <div id="cardFields">
+          <div class="fg"><label class="flbl">رقم البطاقة</label><input type="text" class="finput" placeholder="XXXX XXXX XXXX XXXX" dir="ltr" maxlength="19"></div>
+          <div class="co-row">
+            <div class="fg"><label class="flbl">تاريخ الانتهاء</label><input type="text" class="finput" placeholder="MM / YY" dir="ltr"></div>
+            <div class="fg"><label class="flbl">CVV</label><input type="text" class="finput" placeholder="XXX" dir="ltr" maxlength="4"></div>
+          </div>
+          <div class="fg"><label class="flbl">اسم حامل البطاقة</label><input type="text" class="finput" placeholder="الاسم كما على البطاقة"></div>
+        </div>
+      </div>
+    </div>
+    <div class="co-summary">
+      <div class="co-box">
+        <div class="co-box-t"><span class="ico" style="width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg></span> ملخص الطلب</div>
+        <div class="co-items-list" id="coItems"></div>
+        <div class="co-lines">
+          <div class="co-line"><span>المجموع الفرعي</span><span id="coSub">0 ر.س</span></div>
+          <div class="co-line"><span>رسوم التوصيل</span><span style="color:var(--sage);font-weight:800">مجاني <span class="ico" style="width:14px;height:14px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></span></div>
+          <div class="co-total-row"><span>الإجمالي</span><span class="co-total-val" id="coTotal">0 ر.س</span></div>
+        </div>
+      </div>
+      <div class="co-box">
+        <button class="place-btn" onclick="placeOrder()"><span class="ico" style="width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> تأكيد الطلب</button>
+        <div class="secure-note"><span class="ico" style="width:14px;height:14px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span> الدفع مؤمّن وآمن بالكامل</div>
+      </div>
+    </div>
+  </div>
+  <div id="orderOk" class="hidden">
+    <div class="order-ok">
+      <div class="ok-ring"><span class="ico" style="width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></div>
+      <div class="ok-title">تم استلام طلبك!</div>
+      <div class="ok-sub">شكراً لك، تم تأكيد طلبك بنجاح وسنتواصل معك قريباً لتنسيق التوصيل</div>
+      <div class="ok-num" id="orderNum">رقم الطلب: #TG-0000</div>
+      <button class="btn-w" style="margin:0 auto" onclick="goPage('home')"><span class="ico" style="width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></span> العودة للرئيسية</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ POLICY ══ -->
+<div class="page" id="page-policy">
+  <div class="pol-hero">
+    <h1>سياسات المتجر</h1>
+    <p>آخر تحديث: يوليو 2026</p>
+  </div>
+  <div class="pol-body">
+    <div class="pol-tabs">
+      <button class="pol-tab on" onclick="showPol('delivery',this)"><span class="ico" style="width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><rect x="9" y="11" width="14" height="10" rx="2"/><circle cx="12" cy="21" r="1"/><circle cx="20" cy="21" r="1"/></svg></span> التوصيل</button>
+      <button class="pol-tab" onclick="showPol('returns',this)"><span class="ico" style="width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></span> الإرجاع</button>
+      <button class="pol-tab" onclick="showPol('privacy',this)"><span class="ico" style="width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span> الخصوصية</button>
+      <button class="pol-tab" onclick="showPol('terms',this)"><span class="ico" style="width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8m8 4H8m8 4H8"/></svg></span> الشروط</button>
+    </div>
+    <div class="pol-sec on" id="pol-delivery">
+      <div class="pol-card"><div class="pol-h"><span class="ico" style="width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><rect x="9" y="11" width="14" height="10" rx="2"/><circle cx="12" cy="21" r="1"/><circle cx="20" cy="21" r="1"/></svg></span> سياسة التوصيل</div><p class="pol-p">نسعى لإيصال منتجاتك الطازجة بأسرع وقت ممكن وبأفضل حالة.</p></div>
+      <div class="pol-card"><div class="pol-h"><span class="ico" style="width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span> مواعيد التوصيل</div><ul class="pol-list">
+        <li><span class="ico li-check"><span class="ico" style="width:15px;height:15px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></span> الطلبات داخل المدينة: خلال 2-4 ساعات</li>
+        <li><span class="ico li-check"><span class="ico" style="width:15px;height:15px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></span> الطلبات بين المدن: 1-3 أيام عمل</li>
+        <li><span class="ico li-check"><span class="ico" style="width:15px;height:15px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></span> أوقات العمل: السبت – الخميس، 10ص – 9م</li>
+        <li><span class="ico li-check"><span class="ico" style="width:15px;height:15px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></span> الجمعة: 2م – 9م فقط</li>
+      </ul></div>
+      <div class="pol-card"><div class="pol-h"><span class="ico" style="width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></svg></span> رسوم التوصيل</div><ul class="pol-list">
+        <li><span class="ico li-check"><span class="ico" style="width:15px;height:15px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></span> توصيل مجاني للطلبات فوق 100 ريال</li>
+        <li><span class="ico li-check"><span class="ico" style="width:15px;height:15px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></span> طلبات أقل من 100 ريال: رسوم توصيل 15 ريال</li>
+        <li><span class="ico li-check"><span class="ico" style="width:15px;height:15px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></span> التوصيل السريع (أقل من ساعة): 25 ريال إضافية</li>
+      </ul></div>
+    </div>
+    <div class="pol-sec" id="pol-returns">
+      <div class="pol-card"><div class="pol-h"><span class="ico" style="width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></span> سياسة الإرجاع</div><p class="pol-p">رضاك هو أولويتنا. إذا لم تكن راضياً عن أي منتج، نحن هنا لمساعدتك.</p></div>
+      <div class="pol-card"><div class="pol-h"><span class="ico" style="width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> حالات مقبولة</div><ul class="pol-list">
+        <li><span class="ico li-check"><span class="ico" style="width:15px;height:15px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></span> المنتج تالف أو مكسور عند الاستلام</li>
+        <li><span class="ico li-check"><span class="ico" style="width:15px;height:15px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></span> المنتج لا يطابق الوصف أو الطلب</li>
+        <li><span class="ico li-check"><span class="ico" style="width:15px;height:15px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></span> وصول المنتج بعد تاريخ الانتهاء</li>
+        <li><span class="ico li-check"><span class="ico" style="width:15px;height:15px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></span> خطأ في الطلب من جانبنا</li>
+      </ul></div>
+      <div class="pol-card"><div class="pol-h"><span class="ico" style="width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></svg></span> إجراءات الإرجاع</div><ul class="pol-list">
+        <li><span class="ico li-check"><span class="ico" style="width:15px;height:15px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></span> التواصل معنا خلال 24 ساعة من الاستلام</li>
+        <li><span class="ico li-check"><span class="ico" style="width:15px;height:15px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></span> إرسال صورة للمنتج عبر واتساب</li>
+        <li><span class="ico li-check"><span class="ico" style="width:15px;height:15px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></span> استرداد المبلغ خلال 3-5 أيام عمل</li>
+      </ul></div>
+      <div class="pol-card"><div class="pol-h" style="color:#c85858"><span class="ico" style="width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></svg></span> حالات غير مقبولة</div><ul class="pol-list">
+        <li><span class="ico li-warn"><span class="ico" style="width:15px;height:15px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></svg></span></span> المنتجات الغذائية المفتوحة (لأسباب صحية)</li>
+        <li><span class="ico li-warn"><span class="ico" style="width:15px;height:15px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></svg></span></span> الطلبات المخصصة حسب طلب العميل</li>
+        <li><span class="ico li-warn"><span class="ico" style="width:15px;height:15px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></svg></span></span> تغيير رأي العميل بعد الاستلام</li>
+      </ul></div>
+    </div>
+    <div class="pol-sec" id="pol-privacy">
+      <div class="pol-card"><div class="pol-h"><span class="ico" style="width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span> سياسة الخصوصية</div><p class="pol-p">نحترم خصوصيتك ونلتزم بحماية بياناتك الشخصية.</p></div>
+      <div class="pol-card"><div class="pol-h"><span class="ico" style="width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></svg></span> المعلومات التي نجمعها</div><ul class="pol-list">
+        <li><span class="ico li-check"><span class="ico" style="width:15px;height:15px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></span> الاسم ورقم الجوال وعنوان التوصيل</li>
+        <li><span class="ico li-check"><span class="ico" style="width:15px;height:15px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></span> البريد الإلكتروني للتواصل والفواتير</li>
+        <li><span class="ico li-check"><span class="ico" style="width:15px;height:15px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></span> تاريخ الطلبات لتحسين الخدمة</li>
+      </ul></div>
+      <div class="pol-card"><div class="pol-h"><span class="ico" style="width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span> كيف نحمي بياناتك</div><ul class="pol-list">
+        <li><span class="ico li-check"><span class="ico" style="width:15px;height:15px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></span> لا نبيع أو نشارك بياناتك مع أي طرف ثالث</li>
+        <li><span class="ico li-check"><span class="ico" style="width:15px;height:15px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></span> بياناتك محمية بتشفير SSL</li>
+        <li><span class="ico li-check"><span class="ico" style="width:15px;height:15px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></span> لا نحتفظ ببيانات بطاقتك الائتمانية</li>
+      </ul></div>
+    </div>
+    <div class="pol-sec" id="pol-terms">
+      <div class="pol-card"><div class="pol-h"><span class="ico" style="width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8m8 4H8m8 4H8"/></svg></span> الشروط والأحكام</div><p class="pol-p">باستخدامك لمتجر تغميسة فأنت توافق على هذه الشروط والأحكام.</p></div>
+      <div class="pol-card"><div class="pol-h"><span class="ico" style="width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></svg></span> شروط الطلب</div><ul class="pol-list">
+        <li><span class="ico li-check"><span class="ico" style="width:15px;height:15px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></span> يجب أن يكون عمرك 18 عاماً أو أكثر</li>
+        <li><span class="ico li-check"><span class="ico" style="width:15px;height:15px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></span> الأسعار قابلة للتغيير دون إشعار مسبق</li>
+        <li><span class="ico li-check"><span class="ico" style="width:15px;height:15px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></span> السعرات الحرارية تقديرية وقد تختلف</li>
+      </ul></div>
+      <div class="pol-card"><div class="pol-h"><span class="ico" style="width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></span> الدفع والفواتير</div><ul class="pol-list">
+        <li><span class="ico li-check"><span class="ico" style="width:15px;height:15px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></span> جميع الأسعار بالريال السعودي شاملة ضريبة القيمة المضافة</li>
+        <li><span class="ico li-check"><span class="ico" style="width:15px;height:15px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></span> فاتورة إلكترونية فور تأكيد الطلب</li>
+        <li><span class="ico li-check"><span class="ico" style="width:15px;height:15px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></span> الدفع الإلكتروني مؤمّن بالكامل</li>
+      </ul></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div><img src="DATAURI" alt="Taghmesa" style="width:54px;margin-bottom:14px"><div class="fbrand-name">TAGHMESA · تغميسة</div><div class="fbrand-desc">منتجات طازجة وطبيعية، تغميسات وأطباق بيتية محضّرة بعناية وحب منذ 2023</div></div>
+    <div><div class="fcol-t">روابط سريعة</div><button class="flink" onclick="goPage('home')">الرئيسية</button><button class="flink" onclick="goPage('shop')">المتجر</button><button class="flink" onclick="goPage('about')">من نحن</button><button class="flink" onclick="goPage('contact')">تواصل معنا</button></div>
+    <div><div class="fcol-t">المنتجات</div><button class="flink" onclick="filterAndGo('مطبوخ')">أطباق مطبوخة</button><button class="flink" onclick="filterAndGo('غموس')">غموس وتغميسات</button><button class="flink" onclick="filterAndGo('حلويات')">حلويات</button><button class="flink" onclick="filterAndGo('صوصات')">صوصات</button></div>
+    <div><div class="fcol-t">سياسات</div><button class="flink" onclick="goPage('policy');showPol('delivery',null)">سياسة التوصيل</button><button class="flink" onclick="goPage('policy');showPol('returns',null)">سياسة الإرجاع</button><button class="flink" onclick="goPage('policy');showPol('privacy',null)">الخصوصية</button><button class="flink" onclick="goPage('policy');showPol('terms',null)">الشروط والأحكام</button></div>
+  </div>
+  <hr class="fdiv">
+  <div class="fbottom"><div class="fcopy">© 2026 <span class="fteal">تغميسة</span> — جميع الحقوق محفوظة</div><div class="fcopy">السعرات التقريبية قد تختلف حسب طريقة التحضير</div></div>
+</footer>
+
+<!-- ══ CART ══ -->
+<div class="cart-ov" id="cartOv">
+  <div class="cart-back" onclick="closeCart()"></div>
+  <div class="cart-draw">
+    <div class="cart-hd"><div class="cart-title"><span class="ico" style="width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg></span> سلتك</div><button class="cx" onclick="closeCart()"><span class="ico" style="width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></span></button></div>
+    <div class="cart-items-w" id="cartItems"></div>
+    <div class="cart-ft hidden" id="cartFt">
+      <div class="cart-sub"><span>المجموع الفرعي</span><span id="cartSub">0 ر.س</span></div>
+      <div class="cart-tot"><span class="cart-tot-l">الإجمالي</span><span class="cart-tot-v" id="cartTot">0 ر.س</span></div>
+      <button class="co-btn" onclick="goCheckout()"><span class="ico" style="width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></span> إتمام الطلب</button>
+      <button class="clr-btn" onclick="clearCart()">تفريغ السلة</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ LIGHTBOX ══ -->
+<div class="lb" id="lb">
+  <div class="lb-bg" onclick="closeLb()"></div>
+  <button class="lb-cls" onclick="closeLb()"><span class="ico" style="width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></span></button>
+  <button class="lb-arr lb-prev" onclick="lbNav(-1)"><span class="ico" style="width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span></button>
+  <button class="lb-arr lb-next" onclick="lbNav(1)"><span class="ico" style="width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></span></button>
+  <div class="lb-box">
+    <img class="lb-img" id="lbImg" src="" alt="">
+    <div class="lb-cap" id="lbCap"></div>
+    <div class="lb-capen" id="lbCapEn"></div>
+    <div class="lb-dots" id="lbDots"></div>
+  </div>
+</div>
+
+<!-- ══ TOAST ══ -->
+<div class="toast" id="toast"><div class="toast-dot"></div><span id="toastMsg"></span></div>
+
+<script>
+const PRODUCTS=[
+  {id:1,nameAr:"ورق عنب",nameEn:"Waraq Enab",cat:"مطبوخ",emoji:"🍃",desc:"ورق عنب أصيل محشوّ بأرز بلدي متبّل بعناية، يُلفّ بإحكام ويُطهى على نار هادئة حتى يكتسب قوامه الطري ونكهته الحامضة الغنية — طبق بيتي دافئ يليق بأي سفرة.",img:"DATAURI",featured:true,sizes:[{l:"20 حبة",p:45,c:"900–1300 سعرة"},{l:"40 حبة",p:85,c:"1800–2600 سعرة"}]},
+  {id:2,nameAr:"ملفوف",nameEn:"Malfouf",cat:"مطبوخ",emoji:"🥬",desc:"لفائف ملفوف طازجة محشوّة بمزيج متوازن من الأرز واللحم والتوابل المنزلية، تُطهى بصبر حتى تذوب في الفم — طعم بيتي أصيل بلمسة تغميسة المميزة.",img:"DATAURI",featured:true,sizes:[{l:"20 حبة",p:45,c:"700–900 سعرة"},{l:"40 حبة",p:85,c:"1400–1800 سعرة"}]},
+  {id:3,nameAr:"جريش",nameEn:"Jaresh",cat:"مطبوخ",emoji:"🫕",desc:"جريش سعودي أصيل، حبّاته مطحونة طحناً خشناً ومطبوخة مع اللحم والتوابل ببطء حتى تصل لقوامها الكريمي الغني — دفء المطبخ السعودي في كل ملعقة.",img:"DATAURI",featured:true,sizes:[{l:"صغير",p:35,c:"300–500 سعرة"},{l:"وسط",p:80,c:"700–950 سعرة"},{l:"كبير",p:120,c:"1000–1400 سعرة"}]},
+  {id:4,nameAr:"فتة مكرونة وورق عنب",nameEn:"Pasta & Waraq Enab Fatta",cat:"مطبوخ",emoji:"🍝",desc:"دمج مبتكر بين المكرونة الذهبية وورق العنب المحشوّ، مغطى بصوص لبني كريمي ولمسة دبس رمان حامضة ومكسرات محمّصة — تجربة فتة مختلفة في كل قضمة.",img:"DATAURI",featured:true,sizes:[{l:"الحصة",p:45,c:"950–1400 سعرة"}]},
+  {id:5,nameAr:"فتة ورق عنب",nameEn:"Fattet Waraq Enab",cat:"مطبوخ",emoji:"🥗",featured:true,isNew:true,desc:"فتة غنية تجمع طبقات من الخبز المحمّص وورق العنب المحشوّ، تُتوَّج بلبن كريمي وصوص دبس رمان وحبات رمان طازجة ومكسرات مقرمشة — طبق احتفالي بنكهات متوازنة بين الحامض والدسم.",img:"DATAURI",sizes:[{l:"الحصة",p:45,c:"800–1200 سعرة"}]},
+  {id:6,nameAr:"مسخن",nameEn:"Musakhan",cat:"مطبوخ",emoji:"🫔",featured:true,isNew:true,desc:"لفائف مسخن بخبز طازج محشوّ بدجاج متبّل بالسماق والبصل المحمّر وزيت الزيتون البلدي، تُلفّ وتُخبز حتى تكتسب قرمشة خفيفة من الخارج وطراوة شهية من الداخل — نكهة شرقية أصيلة بأسلوب تغميسة.",img:"DATAURI",sizes:[{l:"25 حبة",p:67,c:"1500–2250 سعرة"}]},
+  {id:7,nameAr:"آيس كريم كراميل",nameEn:"Caramel Ice Cream",cat:"حلويات",emoji:"🍮",desc:"آيس كريم منزلي بقوام حريري ناعم، محضّر بكراميل غني مطبوخ ببطء وطبقة علوية لامعة من صوص الكراميل — حلى بارد يُختتم به أي وجبة بحلاوة متوازنة.",img:"DATAURI",featured:true,sizes:[{l:"صغير",p:70,c:"700–1100 سعرة"},{l:"كبير",p:120,c:"1200–1700 سعرة"}]},
+  {id:8,nameAr:"محبوج",nameEn:"Mahbouj",cat:"غموس",emoji:"🌶️",desc:"غموس محبوج ناري بمزيج من الفلفل والتوابل السعودية المميزة، يُحضّر طازجاً ليضيف نكهة قوية وحارة لأي طبق أو سفرة — لعشاق النكهات الجريئة.",img:"DATAURI",featured:true,sizes:[{l:"البرطمان",p:35,c:"500–850 سعرة"},{l:"برطمانان",p:64,c:"1000–1700 سعرة"}]},
+  {id:9,nameAr:"تعتيمة",nameEn:"Tatema",cat:"غموس",emoji:"🫙",desc:"غموس تعتيمة الكريمي بقوام ناعم متجانس ونكهة متوازنة بين الحموضة الخفيفة والدسم، مثالي مع الخبز الطازج أو كطبق جانبي يكمل أي وجبة.",img:"DATAURI",featured:true,sizes:[{l:"البرطمان",p:40,c:"600–950 سعرة"},{l:"برطمانان",p:74,c:"1200–1900 سعرة"}]},
+  {id:10,nameAr:"صوص دبس رمان",nameEn:"Pomegranate Molasses Sauce",cat:"صوصات",emoji:"🍷",desc:"صوص دبس الرمان الطبيعي، حلو حامض بقوام مركّز، يضيف لمسة لامعة ونكهة متوازنة لأطباقك المفضلة أو للتزيين النهائي.",img:null,sizes:[{l:"الحصة",p:3,c:"25–40 سعرة"},{l:"5 حصص",p:12,c:"125–200 سعرة"}]},
+  {id:11,nameAr:"صوص تعتيمة",nameEn:"Tatema Sauce",cat:"صوصات",emoji:"🥛",desc:"صوص تعتيمة الكريمي، رفيق مثالي يكمّل النكهة ويضيف قوامًا غنيًا لأي طبق تُقدّمه معه.",img:null,sizes:[{l:"الحصة",p:3,c:"80–140 سعرة"},{l:"5 حصص",p:12,c:"400–700 سعرة"}]},
+];
+const IMG_P=PRODUCTS.filter(p=>p.img);
+const selSz={};PRODUCTS.forEach(p=>selSz[p.id]=0);
+const cart=[];
+let curPage='home',curCat='الكل',searchQ='',minP=0,maxP=9999,sortMode='default';
+
+function goPage(pg){
+  document.querySelectorAll('.page').forEach(e=>e.classList.remove('active'));
+  document.getElementById('page-'+pg).classList.add('active');
+  document.querySelectorAll('.nav-link').forEach(e=>e.classList.remove('active'));
+  const map={home:0,shop:1,about:2,contact:3,policy:4};
+  const lnks=document.querySelectorAll('.nav-link');
+  if(lnks[map[pg]])lnks[map[pg]].classList.add('active');
+  curPage=pg;window.scrollTo({top:0,behavior:'smooth'});
+  if(pg==='shop')renderShop();
+  if(pg==='home')renderFeatured();
+  if(pg==='checkout')renderCheckout();
+}
+function filterAndGo(cat){curCat=cat;goPage('shop');}
+function openMob(){document.getElementById('mobNav').classList.add('open');document.body.style.overflow='hidden';}
+function closeMob(){document.getElementById('mobNav').classList.remove('open');document.body.style.overflow='';}
+
+function makeCard(p){
+  const si=selSz[p.id]||0,sv=p.sizes[si];
+  const imgH=p.img
+    ?`<div class="card-img-wrap" onclick="openLb(${p.id})"><img class="card-img" src="${p.img}" alt="${p.nameAr}" loading="lazy"><div class="zoom-chip"><svg viewBox="0 0 24 24" width="12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6m-3-3h6"/></svg> تكبير</div></div>`
+    :`<div class="card-placeholder" style="background:linear-gradient(135deg,rgba(0,149,167,.07),rgba(0,149,167,.16))">${p.emoji}</div>`;
+  const szH=p.sizes.map((s,i)=>`<button class="sz-btn ${i===si?'on':''}" onclick="selSz_fn(${p.id},${i})"><span class="sz-top">${s.l}</span><span class="sz-price">${s.p} ر.س</span></button>`).join('');
+  return `<div class="card" id="card-${p.id}">
+    ${imgH}
+    <div class="card-body">
+      <div class="card-tags"><span class="cat-tag">${p.cat}</span>${p.isNew?'<span class="new-tag">✨ جديد</span>':''}</div>
+      <div><div class="card-name">${p.nameAr}</div><div class="card-en">${p.nameEn}</div></div>
+      <p class="card-desc">${p.desc}</p>
+      <div class="sizes-lbl">اختر الحجم</div>
+      <div class="sizes" id="szs-${p.id}">${szH}</div>
+      <div class="card-cal"><svg viewBox="0 0 24 24" width="13" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg> <span id="cal-${p.id}">${sv.c}</span></div>
+      <div class="card-foot"><div><span class="price-big" id="pr-${p.id}">${sv.p}</span><span class="price-sar">ر.س</span></div>
+      <button class="add-btn" id="ab-${p.id}" onclick="addCart(${p.id})"><svg viewBox="0 0 24 24" width="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> أضف للسلة</button></div>
+    </div>
+  </div>`;
+}
+
+function selSz_fn(pid,idx){
+  selSz[pid]=idx;
+  const p=PRODUCTS.find(x=>x.id===pid),sv=p.sizes[idx];
+  const prEl=document.getElementById('pr-'+pid);if(prEl)prEl.textContent=sv.p;
+  const cEl=document.getElementById('cal-'+pid);if(cEl)cEl.textContent=sv.c;
+  const szEl=document.getElementById('szs-'+pid);
+  if(szEl)szEl.querySelectorAll('.sz-btn').forEach((b,i)=>b.classList.toggle('on',i===idx));
+}
+function renderFeatured(){document.getElementById('featuredGrid').innerHTML=PRODUCTS.filter(p=>p.featured).map(makeCard).join('');}
+function renderShop(){
+  let list=[...PRODUCTS];
+  if(curCat!=='الكل')list=list.filter(p=>p.cat===curCat);
+  if(searchQ)list=list.filter(p=>p.nameAr.includes(searchQ)||p.nameEn.toLowerCase().includes(searchQ.toLowerCase()));
+  list=list.filter(p=>{const bp=p.sizes[selSz[p.id]||0].p;return bp>=minP&&bp<=maxP;});
+  if(sortMode==='price-asc')list.sort((a,b)=>a.sizes[0].p-b.sizes[0].p);
+  if(sortMode==='price-desc')list.sort((a,b)=>b.sizes[0].p-a.sizes[0].p);
+  if(sortMode==='name')list.sort((a,b)=>a.nameAr.localeCompare(b.nameAr,'ar'));
+  document.getElementById('resTxt').textContent=list.length+' منتج';
+  document.getElementById('shopGrid').innerHTML=list.length?list.map(makeCard).join(''):`<div style="text-align:center;padding:80px;color:#c0d0d4;grid-column:1/-1"><svg viewBox="0 0 24 24" width="48" fill="none" stroke="currentColor" stroke-width="1.4" style="display:block;margin:0 auto 14px"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>لا توجد منتجات مطابقة</div>`;
+}
+function setCat(cat,btn){curCat=cat;document.querySelectorAll('.flt').forEach(b=>b.classList.remove('on'));btn.classList.add('on');renderShop();}
+function applyPrice(){minP=parseFloat(document.getElementById('minP').value)||0;maxP=parseFloat(document.getElementById('maxP').value)||9999;renderShop();}
+function doSort(){sortMode=document.getElementById('sortSel').value;renderShop();}
+function onSearch(){searchQ=document.getElementById('searchInput').value;if(curPage==='shop')renderShop();}
+
+function addCart(pid){
+  const p=PRODUCTS.find(x=>x.id===pid),si=selSz[pid]||0,sv=p.sizes[si],key=`${pid}-${si}`;
+  const ex=cart.find(i=>i.key===key);
+  if(ex){ex.qty++;}else{cart.push({key,pid,nameAr:p.nameAr,emoji:p.emoji,varLbl:sv.l,price:sv.p,qty:1});}
+  const btn=document.getElementById('ab-'+pid);
+  if(btn){btn.classList.add('added');btn.innerHTML='<svg viewBox="0 0 24 24" width="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg> أُضيف';setTimeout(()=>{btn.classList.remove('added');btn.innerHTML='<svg viewBox="0 0 24 24" width="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> أضف للسلة';},1100);}
+  updateCart();showToast(`تمت الإضافة: ${p.nameAr} – ${sv.l}`);
+}
+function rmCart(key){const i=cart.findIndex(x=>x.key===key);if(i>-1)cart.splice(i,1);updateCart();}
+function chgQty(key,d){const it=cart.find(x=>x.key===key);if(!it)return;it.qty+=d;if(it.qty<=0)rmCart(key);else updateCart();}
+function clearCart(){cart.length=0;updateCart();}
+function updateCart(){
+  const tot=cart.reduce((s,i)=>s+i.price*i.qty,0),cnt=cart.reduce((s,i)=>s+i.qty,0);
+  const b=document.getElementById('cartBadge');b.textContent=cnt;b.classList.toggle('show',cnt>0);
+  const iEl=document.getElementById('cartItems'),fEl=document.getElementById('cartFt');
+  if(!cart.length){
+    iEl.innerHTML=`<div class="cart-empty"><div class="cart-empty-ring"><svg viewBox="0 0 24 24" width="32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg></div><div style="font-size:16px;font-weight:800;color:#c8d8db">السلة فارغة</div><div style="font-size:13px;color:#d8e4e6">أضف منتجات من المتجر</div></div>`;
+    fEl.classList.add('hidden');
+  }else{
+    iEl.innerHTML=cart.map(it=>`<div class="c-item"><div class="c-ico">${it.emoji}</div><div class="c-info"><div class="c-name">${it.nameAr}</div><div class="c-var">${it.varLbl}</div><div class="c-price">${it.price} ر.س</div><div class="c-qty"><button class="qb" onclick="chgQty('${it.key}',-1)"><svg viewBox="0 0 24 24" width="12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14"/></svg></button><span class="qn">${it.qty}</span><button class="qb" onclick="chgQty('${it.key}',1)"><svg viewBox="0 0 24 24" width="12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button></div></div><button class="c-del" onclick="rmCart('${it.key}')"><svg viewBox="0 0 24 24" width="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>`).join('');
+    fEl.classList.remove('hidden');
+    document.getElementById('cartSub').textContent=tot+' ر.س';
+    document.getElementById('cartTot').textContent=tot+' ر.س';
+  }
+}
+function openCart(){document.getElementById('cartOv').classList.add('open');document.body.style.overflow='hidden';}
+function closeCart(){document.getElementById('cartOv').classList.remove('open');document.body.style.overflow='';}
+function goCheckout(){if(!cart.length){showToast('السلة فارغة!');return;}closeCart();goPage('checkout');}
+function renderCheckout(){
+  const tot=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  document.getElementById('coItems').innerHTML=cart.map(it=>`<div class="co-item"><div class="co-emoji">${it.emoji}</div><div><div class="co-iname">${it.nameAr}</div><div class="co-ivar">${it.varLbl} × ${it.qty}</div></div><div class="co-iprice">${it.price*it.qty} ر.س</div></div>`).join('');
+  document.getElementById('coSub').textContent=tot+' ر.س';
+  document.getElementById('coTotal').textContent=tot+' ر.س';
+  document.getElementById('coForm').classList.remove('hidden');
+  document.getElementById('orderOk').classList.add('hidden');
+}
+function selPay(el){
+  document.querySelectorAll('.pay-opt').forEach(x=>x.classList.remove('on'));el.classList.add('on');
+  document.getElementById('cardFields').style.display=el.textContent.includes('بطاقة')?'block':'none';
+}
+function placeOrder(){
+  const num='TG-'+Math.floor(10000+Math.random()*90000);
+  document.getElementById('orderNum').textContent='رقم الطلب: #'+num;
+  document.getElementById('coForm').classList.add('hidden');
+  document.getElementById('orderOk').classList.remove('hidden');
+  cart.length=0;updateCart();showToast('تم تأكيد طلبك بنجاح! 🎉');
+}
+let lbIdx=0;
+function openLb(pid){const i=IMG_P.findIndex(p=>p.id===pid);if(i<0)return;lbIdx=i;showLbS(i);document.getElementById('lb').classList.add('open');document.body.style.overflow='hidden';}
+function showLbS(i){
+  const p=IMG_P[i],img=document.getElementById('lbImg');
+  img.style.opacity='0';img.style.transform='scale(.9)';
+  setTimeout(()=>{img.src=p.img;img.alt=p.nameAr;document.getElementById('lbCap').textContent=p.nameAr;document.getElementById('lbCapEn').textContent=p.nameEn;
+    document.getElementById('lbDots').innerHTML=IMG_P.map((_,j)=>`<button class="lb-dot ${j===i?'on':''}" onclick="lbGoTo(${j})"></button>`).join('');
+    img.style.transition='opacity .2s,transform .2s';img.style.opacity='1';img.style.transform='scale(1)';},120);
+}
+function lbNav(d){lbIdx=(lbIdx+d+IMG_P.length)%IMG_P.length;showLbS(lbIdx);}
+function lbGoTo(i){lbIdx=i;showLbS(i);}
+function closeLb(){document.getElementById('lb').classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('keydown',e=>{if(document.getElementById('lb').classList.contains('open')){if(e.key==='Escape')closeLb();if(e.key==='ArrowRight')lbNav(-1);if(e.key==='ArrowLeft')lbNav(1);}} );
+function showPol(id,btn){
+  document.querySelectorAll('.pol-sec').forEach(s=>s.classList.remove('on'));
+  document.querySelectorAll('.pol-tab').forEach(t=>t.classList.remove('on'));
+  const s=document.getElementById('pol-'+id);if(s)s.classList.add('on');
+  if(btn)btn.classList.add('on');
+  else{const tabs=document.querySelectorAll('.pol-tab');const map={delivery:0,returns:1,privacy:2,terms:3};if(tabs[map[id]])tabs[map[id]].classList.add('on');}
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function submitForm(){const el=document.getElementById('fOk');el.style.display='flex';showToast('تم إرسال رسالتك! ✉️');setTimeout(()=>el.style.display='none',4500);}
+let tTimer;
+function showToast(msg){clearTimeout(tTimer);document.getElementById('toastMsg').textContent=msg;const t=document.getElementById('toast');t.classList.add('show');tTimer=setTimeout(()=>t.classList.remove('show'),2800);}
+updateCart();renderFeatured();
+</script>
+</body></html>

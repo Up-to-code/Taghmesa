@@ -1,0 +1,4 @@
+# هذا المجلد لعرض الصور فقط — نمنع تشغيل أي كود فيه لأمان إضافي
+<FilesMatch "\.(php|php5|phtml)$">
+  Require all denied
+</FilesMatch>

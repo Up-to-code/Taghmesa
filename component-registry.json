@@ -1,0 +1,121 @@
+{
+  "components": [
+    {
+      "name": "StoreHeader",
+      "path": "components/shared/store-header.tsx",
+      "kind": "shared-ui",
+      "summary": "Responsive RTL storefront header with a two-level desktop navigation, product search, account entry, theme switch, and cart trigger.",
+      "usedIn": ["store-layout"],
+      "props": [],
+      "createdAt": "2026-07-16"
+    },
+    {
+      "name": "MobileBottomNav",
+      "path": "components/shared/mobile-bottom-nav.tsx",
+      "kind": "shared-ui",
+      "summary": "Safari-safe fixed mobile tab bar with route links and a cart-sheet action backed by the shared cart provider.",
+      "usedIn": ["store-layout"],
+      "props": [],
+      "createdAt": "2026-07-17"
+    },
+    {
+      "name": "StoreFooter",
+      "path": "components/shared/store-footer.tsx",
+      "kind": "shared-ui",
+      "summary": "Brand, navigation, policy, and contact footer shared by storefront routes.",
+      "usedIn": ["store-layout"],
+      "props": [],
+      "createdAt": "2026-07-16"
+    },
+    {
+      "name": "StorePromise",
+      "path": "components/shared/store-promise.tsx",
+      "kind": "shared-ui",
+      "summary": "Responsive brand-promise banner with custom bowl artwork, shared above the footer across every storefront route.",
+      "usedIn": ["store-layout"],
+      "props": [],
+      "createdAt": "2026-07-17"
+    },
+    {
+      "name": "CartDrawer",
+      "path": "domains/cart/components/cart-drawer.tsx",
+      "kind": "domain-shared",
+      "summary": "Accessible cart drawer with totals and quantity controls.",
+      "usedIn": ["store-layout", "checkout"],
+      "props": [],
+      "createdAt": "2026-07-16"
+    },
+    {
+      "name": "BrandedLoading",
+      "path": "components/shared/branded-loading.tsx",
+      "kind": "shared-ui",
+      "summary": "Stable page-shaped loading skeleton with a smooth shimmer, responsive storefront geometry, and reduced-motion support.",
+      "usedIn": ["root-loading", "store-loading", "auth-loading"],
+      "props": [],
+      "createdAt": "2026-07-17"
+    },
+    {
+      "name": "StoreIcon",
+      "path": "components/shared/store-icon.tsx",
+      "kind": "shared-ui",
+      "summary": "Consistent stroke SVG icons for storefront navigation, search, and cart controls.",
+      "usedIn": ["store-header", "cart-drawer", "home-page", "contact-page", "contact-form"],
+      "props": ["name", "size"],
+      "createdAt": "2026-07-17"
+    },
+    {
+      "name": "HomeHeroCarousel",
+      "path": "domains/catalog/components/mobile-hero-carousel.tsx",
+      "kind": "domain-ui",
+      "summary": "Accessible swipeable and auto-rotating promotional hero carousel shared by desktop and mobile storefront layouts.",
+      "usedIn": ["home-page"],
+      "props": [],
+      "createdAt": "2026-07-17"
+    },
+    {
+      "name": "HeroFlavorDoodles",
+      "path": "domains/catalog/components/catalog-flavor-art.tsx",
+      "kind": "domain-ui",
+      "summary": "Layered hand-drawn food motifs and a dotted flavor trail for the storefront landing hero.",
+      "usedIn": ["home-page"],
+      "props": [],
+      "createdAt": "2026-07-17"
+    },
+    {
+      "name": "SearchView",
+      "path": "domains/catalog/components/search-view.tsx",
+      "kind": "domain-ui",
+      "summary": "App-style catalog search with image category cards and live product results.",
+      "usedIn": ["search-page"],
+      "props": ["products", "initialQuery"],
+      "createdAt": "2026-07-17"
+    },
+    {
+      "name": "ProductImageGallery",
+      "path": "domains/catalog/components/product-image-gallery.tsx",
+      "kind": "domain-ui",
+      "summary": "Accessible product image gallery with alternate crop views, navigation controls, captions, and category badges.",
+      "usedIn": ["product-details-page"],
+      "props": ["imageUrl", "name", "emoji", "category", "isNew"],
+      "createdAt": "2026-07-17"
+    },
+    {
+      "name": "CredentialsForm",
+      "path": "domains/auth/components/credentials-form.tsx",
+      "kind": "domain-shared",
+      "summary": "Email and password sign-in/sign-up form backed by Better Auth.",
+      "usedIn": ["login-page", "register-page"],
+      "props": ["mode", "nextPath"],
+      "createdAt": "2026-07-17"
+    },
+    {
+      "name": "CheckoutArt",
+      "path": "domains/checkout/components/checkout-art.tsx",
+      "kind": "domain-shared",
+      "summary": "Branded responsive order-bag and bowl illustration with checkout and confirmed-order variants.",
+      "usedIn": ["checkout-page", "checkout-thank-you-page"],
+      "props": ["variant"],
+      "createdAt": "2026-07-17"
+    }
+  ]
+}

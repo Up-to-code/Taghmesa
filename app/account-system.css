@@ -1,0 +1,194 @@
+.account-page { min-height: 70vh; background: var(--bg); }
+
+.account-hero {
+  position: relative;
+  min-height: 280px;
+  overflow: hidden;
+  isolation: isolate;
+  color: #fff;
+  background: linear-gradient(118deg, #073a3d, #07585d 64%, #086a6d);
+}
+.account-hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  opacity: .12;
+  background-image: radial-gradient(rgba(255,255,255,.6) .7px, transparent .7px);
+  background-size: 21px 21px;
+  mask-image: linear-gradient(90deg, #000, transparent 48%);
+}
+.account-hero-inner {
+  position: relative;
+  z-index: 2;
+  width: min(1060px, calc(100% - 48px));
+  min-height: 280px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+.account-hero-copy > span { color: #98d9c0; font-size: 11px; font-weight: 900; }
+.account-hero-copy h1 { margin: 6px 0 8px; font-size: clamp(39px, 5vw, 58px); line-height: 1.15; }
+.account-hero-copy p { margin: 0; color: rgba(255,255,255,.66); font-size: 13px; }
+.account-hero-user { display: flex; align-items: flex-end; flex-direction: column; gap: 2px; text-align: left; }
+.account-hero-user > span { font-size: 14px; font-weight: 900; }
+.account-hero-user > small { color: rgba(255,255,255,.55); font-size: 9px; }
+.account-sign-out { margin-top: 12px; padding: 7px 12px; border: 1px solid rgba(255,255,255,.2); border-radius: 9px; background: transparent; color: rgba(255,255,255,.74); font-size: 9px; font-weight: 800; }
+.account-sign-out:hover { border-color: rgba(255,255,255,.42); color: #fff; background: rgba(255,255,255,.08); }
+
+.account-food-art { position: absolute; z-index: 1; inset: 0; pointer-events: none; }
+.account-food-art svg { position: absolute; overflow: visible; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.account-food-bowl { width: 190px; left: 8%; bottom: -8px; color: rgba(243,185,148,.48); transform: rotate(-4deg); }
+.account-food-bowl path:last-child { color: #8fd4b0; }
+.account-food-jar { width: 100px; left: 29%; top: -18px; color: rgba(143,212,176,.24); transform: rotate(8deg); }
+.account-food-lemon { width: 105px; right: 7%; bottom: -28px; color: rgba(245,194,119,.32); transform: rotate(13deg); }
+.account-food-spoon { width: 150px; right: 24%; top: 21px; color: rgba(255,255,255,.16); transform: rotate(-13deg); }
+.account-food-leaves { width: 125px; right: 36%; bottom: -15px; color: rgba(143,212,176,.2); transform: rotate(-8deg); }
+.account-food-dots { width: 260px; left: 38%; bottom: 24px; color: rgba(255,255,255,.13); stroke-dasharray: 4 8; }
+
+.account-shell { width: min(1060px, calc(100% - 48px)); margin: 0 auto; padding: 30px 0 90px; }
+.account-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.account-tabs a {
+  min-height: 72px;
+  padding: 13px 15px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--text);
+}
+.account-tabs a:hover { border-color: color-mix(in srgb, var(--teal) 40%, var(--border)); }
+.account-tabs a > span { width: 38px; height: 38px; flex: 0 0 38px; display: grid; place-items: center; border-radius: 11px; color: var(--teal); background: var(--aqua); }
+.account-tabs a > div { min-width: 0; display: flex; flex-direction: column; }
+.account-tabs strong { color: var(--char); font-size: 12px; }
+.account-tabs small { margin-top: 1px; color: var(--muted); font-size: 8px; }
+.account-tabs a.active { border-color: var(--teal); background: color-mix(in srgb, var(--aqua) 62%, var(--surface)); }
+.account-tabs a.active > span { color: #fff; background: var(--teal); }
+
+.account-route-content { min-height: 420px; }
+.account-panel { padding: 30px; border: 1px solid var(--border); border-radius: 20px; background: var(--surface); }
+.account-panel-heading { margin-bottom: 24px; padding-bottom: 19px; border-bottom: 1px solid var(--border); }
+.account-panel-heading span { color: var(--teal); font-size: 10px; font-weight: 900; }
+.account-panel-heading h2 { margin: 4px 0 3px; font-size: 25px; line-height: 1.3; }
+.account-panel-heading p { max-width: 580px; margin: 0; color: var(--muted); font-size: 10px; }
+
+.customer-orders-list { display: grid; gap: 13px; }
+.customer-order-card { overflow: hidden; border: 1px solid var(--border); border-radius: 16px; background: color-mix(in srgb, var(--surface) 95%, var(--aqua)); }
+.customer-order-card > header { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 17px 19px 13px; }
+.customer-order-card > header > div { display: flex; flex-direction: column; }
+.customer-order-card > header small { color: var(--muted); font-size: 8px; }
+.customer-order-card > header strong { font-size: 13px; }
+.customer-order-card > header > span { padding: 6px 10px; border-radius: 8px; color: #087078; background: #ddf4f1; font-size: 9px; font-weight: 900; }
+.customer-order-card.status-cancelled > header > span { color: #9d5145; background: #fff0ed; }
+.customer-order-card.status-delivered > header > span { color: #377d59; background: #e8f7ef; }
+.customer-order-progress { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); padding: 10px 22px 17px; }
+.customer-order-progress::before { content: ""; position: absolute; top: 22px; right: 12.5%; left: 12.5%; height: 1px; background: var(--border); }
+.customer-order-progress > span { position: relative; z-index: 1; display: flex; align-items: center; flex-direction: column; gap: 5px; color: var(--muted); }
+.customer-order-progress i { width: 25px; height: 25px; display: grid; place-items: center; border: 2px solid var(--border); border-radius: 50%; background: var(--surface); font-size: 8px; font-style: normal; font-weight: 900; }
+.customer-order-progress small { font-size: 8px; }
+.customer-order-progress > span.done { color: var(--teal); }
+.customer-order-progress > span.done i { border-color: var(--teal); color: #fff; background: var(--teal); }
+.customer-order-summary { display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 18px; padding: 12px 19px; border-top: 1px solid var(--border); color: var(--muted); font-size: 9px; }
+.customer-order-summary span:first-child { display: flex; align-items: center; gap: 6px; }
+.customer-order-summary strong { color: var(--char); font-size: 12px; }
+.customer-order-card details { border-top: 1px solid var(--border); }
+.customer-order-card summary { padding: 10px 19px; color: var(--teal); font-size: 9px; font-weight: 900; cursor: pointer; list-style: none; }
+.customer-order-card summary::-webkit-details-marker { display: none; }
+.customer-order-card summary span { margin-inline-start: 5px; }
+.customer-order-details { padding: 3px 19px 18px; }
+.customer-order-details ul { display: grid; gap: 8px; margin: 0 0 13px; padding: 0; list-style: none; }
+.customer-order-details li { display: flex; justify-content: space-between; gap: 14px; color: var(--text); font-size: 10px; }
+.customer-order-details li span { display: flex; flex-direction: column; }
+.customer-order-details li small { color: var(--muted); font-size: 8px; }
+.customer-order-details > div { padding: 11px; border-radius: 10px; background: var(--bg); color: var(--text); font-size: 9px; }
+.customer-order-details > div > span { display: flex; align-items: center; gap: 6px; }
+.customer-order-details p { margin: 5px 0 0; color: var(--muted); }
+
+.account-empty { min-height: 270px; display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; border-radius: 15px; background: color-mix(in srgb, var(--aqua) 42%, var(--bg)); }
+.account-empty > svg { width: 100px; fill: none; stroke: var(--teal); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; opacity: .7; }
+.account-empty h3 { margin: 12px 0 2px; font-size: 16px; }
+.account-empty p { margin: 0; color: var(--muted); font-size: 10px; }
+.account-empty a { margin-top: 13px; color: var(--teal); font-size: 11px; font-weight: 900; }
+.account-empty.compact { min-height: 150px; }
+
+.account-claim { margin-top: 18px; padding: 19px; border: 1px solid var(--border); border-radius: 14px; background: var(--bg); }
+.account-claim > div:first-child strong { font-size: 12px; }
+.account-claim > div:first-child p { margin: 2px 0 13px; color: var(--text); font-size: 9px; }
+.account-claim-form { display: flex; align-items: end; gap: 9px; flex-wrap: wrap; }
+.account-claim-form > div { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 9px; min-width: 330px; }
+.account-claim-form label,
+.account-profile-form label { display: grid; gap: 6px; color: var(--text); font-size: 10px; font-weight: 800; }
+.account-claim-form input,
+.account-profile-form input,
+.account-profile-form textarea { width: 100%; border: 1px solid var(--border); border-radius: 10px; outline: 0; background: var(--surface); color: var(--char); padding: 10px 12px; font: inherit; font-size: 12px; }
+.account-claim-form input:focus,
+.account-profile-form input:focus,
+.account-profile-form textarea:focus { border-color: var(--teal); box-shadow: 0 0 0 3px color-mix(in srgb, var(--teal) 10%, transparent); }
+.account-claim-form button { min-height: 41px; padding: 8px 15px; border: 0; border-radius: 10px; background: var(--deep); color: #fff; font-size: 10px; font-weight: 900; }
+.account-claim-form > span { flex-basis: 100%; }
+
+.account-profile-form { display: grid; gap: 14px; max-width: 780px; }
+.account-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.account-profile-form input,
+.account-profile-form textarea { background: var(--bg); }
+.account-form-actions { min-height: 42px; display: flex; align-items: center; gap: 12px; }
+.account-form-actions button { min-height: 42px; display: inline-flex; align-items: center; gap: 8px; padding: 9px 17px; border: 0; border-radius: 10px; background: var(--teal); color: #fff; font-size: 11px; font-weight: 900; }
+.account-form-actions button:disabled { opacity: .65; }
+.account-form-success { color: #37805a; font-size: 10px; font-weight: 800; }
+.account-form-error { color: #a34c3f; font-size: 10px; font-weight: 800; }
+.checkout-saved-note { margin: -6px 0 18px; padding: 9px 11px; border-radius: 9px; color: #27745f; background: #e8f7ef; font-size: 10px; }
+
+[data-theme="dark"] .customer-order-card > header > span { color: #91d7d1; background: #173c3d; }
+[data-theme="dark"] .customer-order-card.status-cancelled > header > span { color: #e5a69b; background: #432824; }
+[data-theme="dark"] .customer-order-card.status-delivered > header > span { color: #9ad0b1; background: #203c2d; }
+[data-theme="dark"] .checkout-saved-note { color: #9ad0b1; background: #203c2d; }
+
+@media (max-width: 760px) {
+  .account-hero,
+  .account-hero-inner { min-height: 245px; }
+  .account-hero-inner { width: calc(100% - 32px); align-items: flex-start; justify-content: center; flex-direction: column; gap: 15px; }
+  .account-hero-user { align-items: flex-start; text-align: right; }
+  .account-food-bowl { width: 145px; left: -23px; bottom: -14px; }
+  .account-food-jar { display: none; }
+  .account-food-lemon { width: 85px; right: -18px; bottom: -24px; }
+  .account-food-spoon { width: 115px; right: 5%; top: 20px; }
+  .account-food-leaves { width: 95px; right: 23%; bottom: -10px; }
+  .account-food-dots { display: none; }
+  .account-shell { width: calc(100% - 28px); padding-top: 18px; }
+  .account-tabs { gap: 7px; }
+  .account-tabs a { min-height: 67px; justify-content: center; padding: 10px 6px; text-align: center; }
+  .account-tabs a > span { display: none; }
+  .account-tabs strong { font-size: 10px; }
+  .account-tabs small { font-size: 7px; }
+  .account-panel { padding: 21px 15px; border-radius: 17px; }
+  .account-panel-heading h2 { font-size: 21px; }
+}
+
+@media (max-width: 520px) {
+  .account-hero-copy h1 { font-size: 38px; }
+  .account-tabs small { display: none; }
+  .account-tabs a { min-height: 48px; border-radius: 11px; }
+  .customer-order-card > header,
+  .customer-order-summary { padding-inline: 13px; }
+  .customer-order-summary { grid-template-columns: 1fr auto; gap: 8px; }
+  .customer-order-summary span:nth-child(2) { display: none; }
+  .customer-order-progress { padding-inline: 7px; }
+  .customer-order-progress small { font-size: 7px; }
+  .customer-order-details { padding-inline: 13px; }
+  .account-form-row,
+  .account-claim-form > div { min-width: 0; grid-template-columns: 1fr; }
+  .account-claim-form { align-items: stretch; flex-direction: column; }
+  .account-form-actions { align-items: stretch; flex-direction: column; }
+  .account-form-actions button { justify-content: center; }
+}
