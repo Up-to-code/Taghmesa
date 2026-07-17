@@ -2,6 +2,12 @@
 
 Next.js App Router storefront with a Hono API, Neon PostgreSQL, Drizzle ORM, Better Auth, and Vercel Blob product media.
 
+## Repository layout
+
+The repository root is the only production application and Vercel deploys it with the Next.js framework adapter. Active code is organized under `app/`, `domains/`, `components/`, `hooks/`, `lib/`, and `scripts/`; runtime assets live under `public/`.
+
+The previous PHP storefront, static prototypes, conversion tools, and source assets are preserved under `legacy/` for reference. Vercel excludes that directory through `.vercelignore`.
+
 ## Local setup
 
 1. Copy `.env.example` to `.env.local` and configure `DATABASE_URL`, `BETTER_AUTH_SECRET`, `BETTER_AUTH_URL`, and `BLOB_READ_WRITE_TOKEN`.
@@ -10,7 +16,7 @@ Next.js App Router storefront with a Hono API, Neon PostgreSQL, Drizzle ORM, Bet
 4. Set `INITIAL_ADMIN_EMAIL`, `INITIAL_ADMIN_NAME`, and `INITIAL_ADMIN_PASSWORD`, then run `npm run db:seed`.
 5. Start with `npm run dev` and open `http://localhost:3000`.
 
-The storefront uses the bundled catalog and local `/public/products` images when `DATABASE_URL` is absent. Database-backed checkout and all admin features require PostgreSQL.
+The public storefront uses the bundled catalog and local `/public/products` images when `DATABASE_URL` is absent. Authentication, checkout, account, and admin requests require PostgreSQL and report a configuration error until it is configured.
 
 ## Authentication and authorization
 
@@ -24,7 +30,9 @@ After applying the PostgreSQL migration, set both `SOURCE_DATABASE_URL` and `DAT
 
 ## Vercel deployment
 
-Connect a Neon database and public Vercel Blob store to the project. Add `DATABASE_URL`, `BLOB_READ_WRITE_TOKEN`, `BETTER_AUTH_URL`, and a strong `BETTER_AUTH_SECRET` to all required Vercel environments. Run migrations and the seed/import command once against production before enabling checkout.
+The included `vercel.json` explicitly selects Next.js; do not configure a custom output directory or a rewrite for `/`. Connect a Neon database and public Vercel Blob store to the project. Add `DATABASE_URL`, `BLOB_READ_WRITE_TOKEN`, `BETTER_AUTH_URL`, and a strong `BETTER_AUTH_SECRET` to all required Vercel environments, then redeploy so the deployment receives them. Run migrations and the seed/import command once against production before enabling authentication or checkout.
+
+A Vercel-branded `404: NOT_FOUND` for a deployment-specific URL means that deployment is unavailable or failed. It is not the application's `/` route. Open the latest successful deployment or the project's production domain after redeploying.
 
 Cash on delivery is the only enabled payment method. Card, Apple Pay, and contact delivery are deliberately non-functional parity placeholders.
 

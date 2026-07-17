@@ -1,9 +1,10 @@
 import { headers } from "next/headers";
 import { redirect, unauthorized } from "next/navigation";
-import { auth } from "./index";
+import { getAuth } from "./index";
 
 export async function getCurrentSession() {
-  return auth.api.getSession({ headers: await headers() });
+  if (!process.env.DATABASE_URL) return null;
+  return getAuth().api.getSession({ headers: await headers() });
 }
 
 export async function requireAdminPage() {

@@ -1,5 +1,5 @@
 import { eq, sql } from "drizzle-orm";
-import { auth } from "@/lib/auth";
+import { getAuth } from "@/lib/auth";
 import { getDb } from "@/lib/db";
 import { productSizes, products, user } from "@/lib/db/schema";
 import { seedProducts } from "@/domains/catalog/seed-data";
@@ -21,7 +21,7 @@ async function main() {
   const [existingAdmin] = await db.select({ id: user.id }).from(user).where(eq(user.email, adminEmail.toLowerCase())).limit(1);
   let adminId = existingAdmin?.id;
   if (!adminId) {
-    const created = await auth.api.signUpEmail({ body: { name: process.env.INITIAL_ADMIN_NAME ?? "Admin", email: adminEmail, password } });
+    const created = await getAuth().api.signUpEmail({ body: { name: process.env.INITIAL_ADMIN_NAME ?? "Admin", email: adminEmail, password } });
     adminId = created.user.id;
   }
   await db.update(user).set({ role: "admin", updatedAt: new Date() }).where(eq(user.id, adminId));

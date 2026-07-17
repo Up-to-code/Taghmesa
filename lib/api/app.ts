@@ -2,7 +2,7 @@ import { randomInt } from "node:crypto";
 import { zValidator } from "@hono/zod-validator";
 import { and, eq, inArray, isNull, ne, sql } from "drizzle-orm";
 import { Hono, type Context } from "hono";
-import { auth } from "@/lib/auth";
+import { getAuth } from "@/lib/auth";
 import { getDb } from "@/lib/db";
 import { categories, couponRedemptions, coupons, customerProfiles, orderItems, orders, productSizes, products, subcategories, user } from "@/lib/db/schema";
 import { imageStorage, InvalidImageError, MAX_IMAGE_SIZE } from "@/lib/image-storage";
@@ -45,7 +45,7 @@ app.post("/coupons/validate", zValidator("json", couponValidationInput, validati
 
 app.post("/orders", zValidator("json", orderInput, validationHook), async (c) => {
   const input = c.req.valid("json");
-  const current = await auth.api.getSession({ headers: c.req.raw.headers });
+  const current = await getAuth().api.getSession({ headers: c.req.raw.headers });
   const merged = new Map<number, { productId: number; sizeId: number; quantity: number }>();
   for (const item of input.items) {
     const current = merged.get(item.sizeId);
@@ -129,7 +129,7 @@ const account = new Hono<{ Variables: CustomerVariables }>();
 
 account.use("*", async (c, next) => {
   if (c.req.method !== "GET" && !validateOrigin(c.req.raw)) return c.json({ error: "مصدر الطلب غير مسموح" }, 403);
-  const current = await auth.api.getSession({ headers: c.req.raw.headers });
+  const current = await getAuth().api.getSession({ headers: c.req.raw.headers });
   if (!current) return c.json({ error: "يجب تسجيل الدخول" }, 401);
   c.set("customer", { id: current.user.id, name: current.user.name, email: current.user.email });
   await next();
@@ -166,7 +166,7 @@ app.route("/account", account);
 const admin = new Hono<{ Variables: Variables }>();
 
 admin.use("*", async (c, next) => {
-  const current = await auth.api.getSession({ headers: c.req.raw.headers });
+  const current = await getAuth().api.getSession({ headers: c.req.raw.headers });
   if (!current) return c.json({ error: "يجب تسجيل الدخول" }, 401);
   if (current.user.role !== "admin") return c.json({ error: "ليس لديك صلاحية الإدارة" }, 401);
   c.set("admin", { id: current.user.id, name: current.user.name, email: current.user.email });
