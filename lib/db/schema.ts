@@ -54,6 +54,25 @@ export const productSizes = pgTable("product_sizes", {
   sortOrder: integer("sort_order").notNull().default(0),
 }, (table) => [index("product_sizes_product_idx").on(table.productId, table.sortOrder)]);
 
+export const coupons = pgTable("coupons", {
+  id: serial("id").primaryKey(),
+  code: varchar("code", { length: 40 }).notNull(),
+  description: varchar("description", { length: 240 }).notNull().default(""),
+  discountType: varchar("discount_type", { length: 16 }).notNull().default("percentage"),
+  discountValue: decimal("discount_value", { precision: 10, scale: 2 }).notNull(),
+  minSubtotal: decimal("min_subtotal", { precision: 10, scale: 2 }).notNull().default("0"),
+  usageLimit: integer("usage_limit"),
+  usedCount: integer("used_count").notNull().default(0),
+  isActive: boolean("is_active").notNull().default(true),
+  startsAt: timestamp("starts_at", { withTimezone: true }),
+  endsAt: timestamp("ends_at", { withTimezone: true }),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+}, (table) => [
+  uniqueIndex("coupons_code_idx").on(table.code),
+  index("coupons_active_idx").on(table.isActive),
+]);
+
 export const orders = pgTable("orders", {
   id: serial("id").primaryKey(),
   userId: text("user_id").references(() => user.id, { onDelete: "set null" }),
@@ -66,6 +85,8 @@ export const orders = pgTable("orders", {
   notes: text("notes"),
   paymentMethod: varchar("payment_method", { length: 20 }).notNull().default("cod"),
   subtotal: decimal("subtotal", { precision: 10, scale: 2 }).notNull(),
+  couponCode: varchar("coupon_code", { length: 40 }),
+  discountAmount: decimal("discount_amount", { precision: 10, scale: 2 }).notNull().default("0"),
   deliveryFee: decimal("delivery_fee", { precision: 10, scale: 2 }).notNull().default("0"),
   total: decimal("total", { precision: 10, scale: 2 }).notNull(),
   status: varchar("status", { length: 24 }).notNull().default("new"),
@@ -85,6 +106,20 @@ export const orderItems = pgTable("order_items", {
   unitPrice: decimal("unit_price", { precision: 10, scale: 2 }).notNull(),
   quantity: integer("quantity").notNull(),
 }, (table) => [index("order_items_order_idx").on(table.orderId)]);
+
+export const couponRedemptions = pgTable("coupon_redemptions", {
+  id: serial("id").primaryKey(),
+  couponId: integer("coupon_id").references(() => coupons.id, { onDelete: "set null" }),
+  orderId: integer("order_id").notNull().references(() => orders.id, { onDelete: "cascade" }),
+  userId: text("user_id").references(() => user.id, { onDelete: "set null" }),
+  code: varchar("code", { length: 40 }).notNull(),
+  discountAmount: decimal("discount_amount", { precision: 10, scale: 2 }).notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+}, (table) => [
+  uniqueIndex("coupon_redemptions_order_idx").on(table.orderId),
+  index("coupon_redemptions_coupon_idx").on(table.couponId),
+  index("coupon_redemptions_user_idx").on(table.userId, table.createdAt),
+]);
 
 // Better Auth core schema. Authentication identities are shared by customers and
 // administrators; the admin plugin authorizes privileged users through `role`.

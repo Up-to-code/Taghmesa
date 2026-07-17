@@ -12,6 +12,7 @@ function groupProducts(productRows: (typeof products.$inferSelect)[], sizeRows: 
   }
   return productRows.map((product) => ({
     id: product.id, nameAr: product.nameAr, nameEn: product.nameEn, category: product.category,
+    categoryId: product.categoryId, subcategoryId: product.subcategoryId,
     emoji: product.emoji, description: product.description, imageUrl: product.imageUrl,
     isFeatured: product.isFeatured, isNew: product.isNew, isActive: product.isActive,
     sortOrder: product.sortOrder, sizes: sizesByProduct.get(product.id) ?? [],
@@ -28,19 +29,80 @@ export async function listProducts(activeOnly = true): Promise<Product[]> {
   return groupProducts(productRows, sizeRows);
 }
 
+function mapOrder(
+  order: typeof orders.$inferSelect,
+  items: Array<{
+    item: typeof orderItems.$inferSelect;
+    product: {
+      nameEn: string;
+      imageUrl: string | null;
+      emoji: string;
+      category: string;
+      description: string;
+      isActive: boolean;
+    } | null;
+  }>,
+): Order {
+  return {
+    ...order,
+    paymentMethod: "cod" as const,
+    subtotal: Number(order.subtotal),
+    discountAmount: Number(order.discountAmount),
+    deliveryFee: Number(order.deliveryFee),
+    total: Number(order.total),
+    status: order.status as Order["status"],
+    createdAt: order.createdAt.toISOString(),
+    items: items.map(({ item, product }) => ({
+      id: item.id,
+      productId: item.productId,
+      productName: item.productName,
+      productNameEn: product?.nameEn ?? null,
+      productImageUrl: product?.imageUrl ?? null,
+      productEmoji: product?.emoji ?? null,
+      productCategory: product?.category ?? null,
+      productDescription: product?.description ?? null,
+      productIsActive: product?.isActive ?? null,
+      sizeLabel: item.sizeLabel,
+      unitPrice: Number(item.unitPrice),
+      quantity: item.quantity,
+    })),
+  };
+}
+
+function selectOrderItems() {
+  return {
+    item: orderItems,
+    product: {
+      nameEn: products.nameEn,
+      imageUrl: products.imageUrl,
+      emoji: products.emoji,
+      category: products.category,
+      description: products.description,
+      isActive: products.isActive,
+    },
+  };
+}
+
 export async function listOrders(): Promise<Order[]> {
   const db = getDb();
   const rows = await db.select().from(orders).orderBy(desc(orders.createdAt)).limit(200);
   if (!rows.length) return [];
-  const items = await db.select().from(orderItems).where(inArray(orderItems.orderId, rows.map((o) => o.id)));
-  return rows.map((order) => ({
-    ...order,
-    paymentMethod: "cod" as const,
-    subtotal: Number(order.subtotal), deliveryFee: Number(order.deliveryFee), total: Number(order.total),
-    status: order.status as Order["status"], createdAt: order.createdAt.toISOString(),
-    items: items.filter((item) => item.orderId === order.id).map((item) => ({
-      id: item.id, productId: item.productId, productName: item.productName, sizeLabel: item.sizeLabel,
-      unitPrice: Number(item.unitPrice), quantity: item.quantity,
-    })),
-  }));
+  const items = await db
+    .select(selectOrderItems())
+    .from(orderItems)
+    .leftJoin(products, eq(orderItems.productId, products.id))
+    .where(inArray(orderItems.orderId, rows.map((o) => o.id)));
+  return rows.map((order) => mapOrder(order, items.filter(({ item }) => item.orderId === order.id)));
+}
+
+export async function getOrder(orderId: number): Promise<Order | null> {
+  const db = getDb();
+  const [order] = await db.select().from(orders).where(eq(orders.id, orderId)).limit(1);
+  if (!order) return null;
+  const items = await db
+    .select(selectOrderItems())
+    .from(orderItems)
+    .leftJoin(products, eq(orderItems.productId, products.id))
+    .where(eq(orderItems.orderId, orderId));
+  return mapOrder(order, items);
 }

@@ -1,0 +1,15 @@
+"use client";
+
+import Image from "next/image";
+import { ImagePlus, RotateCcw, UploadCloud } from "lucide-react";
+import { useRef, useState } from "react";
+import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+
+export function AdminImageUpload({ name = "image", currentUrl, label = "صورة الغلاف", className }: { name?: string; currentUrl?: string | null; label?: string; className?: string }) {
+  const inputRef = useRef<HTMLInputElement>(null); const [preview, setPreview] = useState<string | null>(currentUrl ?? null); const [dragging, setDragging] = useState(false); const [hasSelection,setHasSelection]=useState(false);
+  function choose(file?: File) { if (!file) return; if (file.size > 4 * 1024 * 1024) { toast.error("حجم الصورة يجب ألا يتجاوز 4MB"); return; } if (!["image/jpeg","image/png","image/webp"].includes(file.type)) { toast.error("استخدم صورة JPG أو PNG أو WebP"); return; } setPreview(URL.createObjectURL(file)); setHasSelection(true); }
+  function resetSelection() { setPreview(currentUrl ?? null); setHasSelection(false); if (inputRef.current) inputRef.current.value=""; }
+  return <div className={cn("space-y-2", className)}><span className="text-xs font-bold text-slate-700">{label}</span><div onDragOver={(event) => { event.preventDefault(); setDragging(true); }} onDragLeave={() => setDragging(false)} onDrop={(event) => { event.preventDefault(); setDragging(false); const file=event.dataTransfer.files[0]; if (file) { const transfer=new DataTransfer(); transfer.items.add(file); if(inputRef.current) inputRef.current.files=transfer.files; choose(file); } }} className={cn("relative grid min-h-48 place-items-center overflow-hidden rounded-2xl border-2 border-dashed bg-slate-50 transition-colors", dragging ? "border-cyan-500 bg-cyan-50" : "border-slate-200 hover:border-cyan-300")}>{preview ? <><Image src={preview} alt="معاينة الصورة" fill className="object-cover" sizes="600px"/><div className="absolute inset-0 bg-gradient-to-t from-slate-950/55 via-transparent to-transparent"/><Button type="button" variant="secondary" size="sm" className="absolute bottom-3 right-3" onClick={() => inputRef.current?.click()}><ImagePlus/>تغيير الصورة</Button>{hasSelection ? <Button type="button" variant="secondary" size="icon-sm" title="إلغاء الصورة المختارة" className="absolute left-3 top-3" onClick={resetSelection}><RotateCcw/><span className="sr-only">إلغاء الصورة المختارة</span></Button> : null}</> : <button type="button" className="flex flex-col items-center gap-2 p-8 text-center" onClick={() => inputRef.current?.click()}><span className="grid size-12 place-items-center rounded-2xl bg-cyan-100 text-cyan-700"><UploadCloud/></span><b className="text-sm text-slate-800">اسحب الصورة هنا أو اختر ملفاً</b><small className="text-[10px] text-slate-400">JPG أو PNG أو WebP — حتى 4MB</small></button>}<input ref={inputRef} className="sr-only" name={name} type="file" accept="image/jpeg,image/png,image/webp" onChange={(event) => choose(event.target.files?.[0])}/></div></div>;
+}

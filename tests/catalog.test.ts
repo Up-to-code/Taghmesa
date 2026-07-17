@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { filterProducts } from "@/domains/catalog/filter-products";
 import { seedProducts } from "@/domains/catalog/seed-data";
-import { orderInput, statusInput } from "@/lib/api/schemas";
+import { categoryInput, orderInput, statusInput, subcategoryInput } from "@/lib/api/schemas";
 
 describe("catalog filtering", () => {
   it("filters by category and price", () => {
@@ -22,5 +22,10 @@ describe("API validation", () => {
   it("allows only known order statuses", () => {
     expect(statusInput.safeParse({ status: "delivered" }).success).toBe(true);
     expect(statusInput.safeParse({ status: "unknown" }).success).toBe(false);
+  });
+  it("validates normalized category and subcategory inputs", () => {
+    expect(categoryInput.safeParse({ nameAr: "مطبوخ", nameEn: "Cooked", slug: "cooked", isActive: true, sortOrder: 1 }).success).toBe(true);
+    expect(categoryInput.safeParse({ nameAr: "مطبوخ", slug: "رابط عربي" }).success).toBe(false);
+    expect(subcategoryInput.safeParse({ categoryId: 1, nameAr: "صواني", slug: "trays", isActive: true, sortOrder: 1 }).success).toBe(true);
   });
 });

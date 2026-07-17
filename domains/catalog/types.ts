@@ -10,6 +10,8 @@ export type Product = {
   nameAr: string;
   nameEn: string;
   category: string;
+  categoryId?: number | null;
+  subcategoryId?: number | null;
   emoji: string;
   description: string;
   imageUrl: string | null;
@@ -26,6 +28,12 @@ export type OrderItem = {
   id?: number;
   productId: number | null;
   productName: string;
+  productNameEn?: string | null;
+  productImageUrl?: string | null;
+  productEmoji?: string | null;
+  productCategory?: string | null;
+  productDescription?: string | null;
+  productIsActive?: boolean | null;
   sizeLabel: string;
   unitPrice: number;
   quantity: number;
@@ -42,6 +50,8 @@ export type Order = {
   notes: string | null;
   paymentMethod: "cod";
   subtotal: number;
+  couponCode: string | null;
+  discountAmount: number;
   deliveryFee: number;
   total: number;
   status: OrderStatus;

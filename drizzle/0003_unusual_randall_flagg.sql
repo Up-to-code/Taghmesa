@@ -25,7 +25,7 @@ CREATE TABLE "subcategories" (
 ALTER TABLE "products" ADD COLUMN "category_id" integer;--> statement-breakpoint
 ALTER TABLE "products" ADD COLUMN "subcategory_id" integer;--> statement-breakpoint
 INSERT INTO "categories" ("name_ar", "name_en", "slug", "sort_order")
-SELECT DISTINCT "category", '', 'legacy-' || md5("category"), dense_rank() OVER (ORDER BY "category")
+SELECT DISTINCT "category", '', 'legacy-' || md5("category"), dense_rank() OVER (ORDER BY "category")::integer
 FROM "products";--> statement-breakpoint
 UPDATE "products"
 SET "category_id" = "categories"."id"

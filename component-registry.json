@@ -1,6 +1,69 @@
 {
   "components": [
     {
+      "name": "UnauthorizedView",
+      "path": "domains/admin/components/unauthorized-view.tsx",
+      "kind": "domain-shared",
+      "summary": "Branded Arabic 401 screen shared by the request-level response and Next.js unauthorized boundary.",
+      "usedIn": ["admin-unauthorized-boundary", "admin-unauthorized-response"],
+      "props": [],
+      "createdAt": "2026-07-17"
+    },
+    {
+      "name": "ShadcnAdminPrimitives",
+      "path": "components/ui",
+      "kind": "primitive",
+      "summary": "Generated shadcn Nova/Radix primitives used throughout the admin shell, forms, dialogs, cards, tables, tabs, selects, sheets, tooltips, and feedback.",
+      "usedIn": ["admin-shell", "admin-overview", "admin-categories", "admin-products", "admin-orders", "admin-settings"],
+      "props": ["className", "variant", "size", "asChild"],
+      "createdAt": "2026-07-17"
+    },
+    {
+      "name": "AdminPageHeader",
+      "path": "domains/admin/components/ui/admin-page-header.tsx",
+      "kind": "domain-shared",
+      "summary": "Consistent responsive title, eyebrow, description, and action composition for every admin route.",
+      "usedIn": ["admin-overview", "admin-categories", "admin-category-detail", "admin-products", "admin-orders", "admin-settings"],
+      "props": ["eyebrow", "title", "description", "action"],
+      "createdAt": "2026-07-17"
+    },
+    {
+      "name": "AdminImageUpload",
+      "path": "domains/admin/components/ui/admin-image-upload.tsx",
+      "kind": "domain-shared",
+      "summary": "Drag-and-drop image input with preview, replace, removal, type guidance, and 4MB validation used by catalog editors.",
+      "usedIn": ["category-create-dialog", "category-detail", "product-editor-form"],
+      "props": ["name", "currentUrl", "label", "className"],
+      "createdAt": "2026-07-17"
+    },
+    {
+      "name": "ProductEditorForm",
+      "path": "domains/admin/components/products/product-editor-form.tsx",
+      "kind": "domain-shared",
+      "summary": "Dedicated create/edit product page form with blue data, content, and option tabs plus category-aware subcategory selection.",
+      "usedIn": ["product-create-page", "product-edit-page"],
+      "props": ["product", "categories"],
+      "createdAt": "2026-07-17"
+    },
+    {
+      "name": "RichTextEditor",
+      "path": "domains/admin/components/ui/rich-text-editor.tsx",
+      "kind": "domain-shared",
+      "summary": "Tiptap StarterKit editor with blue formatting toolbar, headings, lists, quotes, undo, and redo for catalog content.",
+      "usedIn": ["product-editor-form"],
+      "props": ["name", "defaultValue"],
+      "createdAt": "2026-07-17"
+    },
+    {
+      "name": "RichText",
+      "path": "components/shared/rich-text.tsx",
+      "kind": "shared-ui",
+      "summary": "Allowlist-sanitized renderer for persisted catalog rich text with plain-text backward compatibility.",
+      "usedIn": ["product-details-page"],
+      "props": ["html", "className"],
+      "createdAt": "2026-07-17"
+    },
+    {
       "name": "StoreHeader",
       "path": "components/shared/store-header.tsx",
       "kind": "shared-ui",

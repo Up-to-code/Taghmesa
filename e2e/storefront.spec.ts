@@ -175,9 +175,10 @@ test("bottom navigation remains visible in a scaled tablet preview", async ({ pa
 });
 
 test("admin pages enforce authentication", async ({ page }) => {
-  await page.goto("/admin/products");
-  await expect(page).toHaveURL(/\/admin\/login/);
-  await expect(page.getByRole("heading", { name: "لوحة التحكم" })).toBeVisible();
+  const response = await page.goto("/admin/products");
+  expect(response?.status()).toBe(401);
+  await expect(page).toHaveURL(/\/admin\/products/);
+  await expect(page.getByRole("heading", { name: "هذه المساحة للمشرفين فقط" })).toBeVisible();
 });
 
 test("customer email and password forms are available", async ({ page }) => {
@@ -196,6 +197,6 @@ test("configured admin credentials can sign in", async ({ page }) => {
   await page.getByLabel("البريد الإلكتروني").fill(process.env.E2E_ADMIN_EMAIL!);
   await page.getByLabel("كلمة المرور").fill(process.env.E2E_ADMIN_PASSWORD!);
   await page.getByRole("button", { name: "دخول" }).click();
-  await expect(page).toHaveURL(/\/admin\/products/);
-  await expect(page.getByRole("heading", { name: /المنتجات/ })).toBeVisible();
+  await expect(page).toHaveURL(/\/admin$/);
+  await expect(page.getByRole("heading", { name: "نظرة عامة على المتجر" })).toBeVisible();
 });

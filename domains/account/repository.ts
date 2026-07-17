@@ -20,6 +20,8 @@ function mapOrder(
     notes: order.notes,
     paymentMethod: "cod",
     subtotal: Number(order.subtotal),
+    couponCode: order.couponCode,
+    discountAmount: Number(order.discountAmount),
     deliveryFee: Number(order.deliveryFee),
     total: Number(order.total),
     status: order.status as Order["status"],

@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import type { Product } from "../types";
+import { plainTextFromRichText } from "@/lib/rich-text";
 import { useCart } from "@/domains/cart/cart-context";
 import { StoreIcon } from "@/components/shared/store-icon";
 import { animateProductToCart } from "../animate-product-to-cart";
@@ -53,7 +54,7 @@ export function ProductCard({ product, priority = false, variant = "grid" }: { p
     <div className="product-body">
       <h3>{product.nameAr}</h3>
       <small className="product-en">{product.nameEn}</small>
-      <p>{product.description}</p>
+      <p>{plainTextFromRichText(product.description)}</p>
       <div className="product-choice-row">
         <span>اختر الكمية</span>
         <div className="size-options" aria-label={`اختر كمية ${product.nameAr}`}>{product.sizes.map((candidate, index) => <button type="button" key={candidate.id} className={index === sizeIndex ? "active" : ""} onClick={() => setSizeIndex(index)} aria-pressed={index === sizeIndex}>{candidate.label}</button>)}</div>

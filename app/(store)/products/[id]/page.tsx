@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { loadStoreProductWithRecommendations } from "@/domains/catalog/load-products";
 import { ProductDetailsActions } from "@/domains/catalog/components/product-details-actions";
+import { RichText } from "@/components/shared/rich-text";
 import { ProductImageGallery } from "@/domains/catalog/components/product-image-gallery";
 import { ProductFlavorStamp } from "@/domains/catalog/components/catalog-flavor-art";
 import { ProductGrid } from "@/domains/catalog/components/product-grid";
@@ -29,7 +30,7 @@ export default async function ProductDetailsPage({ params }: { params: Promise<{
         <p className="detail-kicker">TAGHMESA · DIPS & MORE</p>
         <div className="detail-title-row"><ProductFlavorStamp category={product.category}/><div><h1>{product.nameAr}</h1><svg className="detail-title-swash" viewBox="0 0 280 22" preserveAspectRatio="none" aria-hidden="true"><path d="M6 12c69 8 150 9 268-3"/><path d="M86 18c48 2 97 0 143-4"/></svg></div></div>
         <p className="detail-en">{product.nameEn}</p>
-        <p className="detail-description">{product.description}</p>
+        <RichText html={product.description} className="detail-description"/>
         <div className="detail-flavor-tags" aria-label="مميزات المنتج"><span>طازج يومياً</span><span>صنع يدوي</span><span>للمشاركة</span></div>
         <ProductDetailsActions product={product}/>
         <div className="detail-promises"><span>✓ محضّر حسب الطلب</span><span>✓ مكونات طبيعية</span><span>✓ الدفع عند الاستلام</span></div>
