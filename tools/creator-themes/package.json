@@ -1,0 +1,29 @@
+{
+  "name": "creator-themes",
+  "version": "0.1.0",
+  "description": "Scaffold Salla Twilight themes from regional creator templates (e.g. Sufra, the food theme).",
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "creator-themes": "bin/creator-themes.js"
+  },
+  "files": [
+    "bin",
+    "lib",
+    "templates"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "create": "node bin/creator-themes.js"
+  },
+  "keywords": [
+    "salla",
+    "twilight",
+    "theme",
+    "cli",
+    "ecommerce",
+    "storefront"
+  ]
+}

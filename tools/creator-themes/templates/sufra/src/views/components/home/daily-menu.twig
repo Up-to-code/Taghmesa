@@ -1,0 +1,37 @@
+{#
+| Variable                | Type     | Description                                |
+|-------------------------|----------|--------------------------------------------|
+| component               | object   | Merchant settings                          |
+| component.title         | ?string  | Section title                              |
+| component.items         | object[] | menu dishes                                |
+| component.items[].image | string   |                                            |
+| component.items[].title | string   |                                            |
+| component.items[].description | string |                                       |
+| component.items[].url   | string   | resolved variable-list url                 |
+| position                | int      | Sorting number start from zero             |
+#}
+<section data-testid="store-home-daily-menu" class="s-block s-block--daily-menu s-block--alt-bg">
+    <div class="container">
+        {% if component.title %}
+            <div class="s-block__title">
+                <div class="right-side">
+                    <h2>{{ component.title }}</h2>
+                </div>
+            </div>
+        {% endif %}
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            {% for item in component.items %}
+                <a href="{{ item.url }}" class="dish-card group">
+                    <div class="dish-card__media">
+                        <img src="{{ item.image }}" alt="{{ item.title }}" loading="lazy" class="object-cover w-full h-full">
+                    </div>
+                    <div class="dish-card__body">
+                        <h3>{{ item.title }}</h3>
+                        {% if item.description %}<p>{{ item.description }}</p>{% endif %}
+                        <span class="dish-card__cta">{{ trans('blocks.sufra.order_now') }} <i class="sicon-keyboard_arrow_left"></i></span>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>

@@ -1,0 +1,23 @@
+{#
+| Variable               | Type     | Description                                  |
+|------------------------|----------|----------------------------------------------|
+| component              | object   | Merchant settings                            |
+| component.image        | string   | Chef / kitchen photo                         |
+| component.title        | ?string  |                                              |
+| component.description  | ?string  | Story text                                   |
+| position               | int      | Sorting number start from zero               |
+#}
+<section data-testid="store-home-about-chef" class="s-block s-block--about">
+    <div class="container">
+        <div class="grid items-center gap-10 lg:grid-cols-2">
+            <div class="about-chef__media relative">
+                <img src="{{ component.image }}" alt="{{ component.title }}" loading="lazy" class="w-full object-cover rounded-large shadow-default">
+                <span class="about-chef__badge"><i class="sicon-chef"></i></span>
+            </div>
+            <div class="about-chef__content">
+                {% if component.title %}<h2 class="s-block__eyebrow-title">{{ component.title }}</h2>{% endif %}
+                {% if component.description %}<p class="about-chef__text leading-8">{{ component.description }}</p>{% endif %}
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,35 @@
+{#
+| Variable             | Type     | Description                                  |
+|----------------------|----------|----------------------------------------------|
+| component            | object   | Merchant settings                            |
+| component.items[]    | array    | List of features                             |
+| component.items[].icon  | string | sicon-* class                              |
+| component.items[].title | string |                                          |
+| component.items[].text  | string |                                          |
+| position             | Int      | Sorting number start from zero               |
+#}
+<section data-testid="store-home-features" class="s-block s-block--features features" aria-label="مميزات المتجر">
+    <svg class="features-paper-art" viewBox="0 0 1200 180" preserveAspectRatio="none" aria-hidden="true">
+        <path class="features-paper-trail" d="M16 124c121-81 221 47 355-21 121-62 219 41 349-12 147-61 271 26 463-41"/>
+        <circle cx="16" cy="124" r="4"/>
+        <circle cx="1183" cy="50" r="4"/>
+        <g class="features-paper-citrus">
+            <circle cx="85" cy="46" r="26"/>
+            <path d="M85 20v52M59 46h52M67 28l36 36m0-36L67 64"/>
+        </g>
+        <g class="features-paper-leaf">
+            <path d="M1104 146c18-15 34-31 48-52m-30 32c-13 0-21-7-23-18 12-2 21 3 26 14m13-14c-1-12 6-20 17-23 3 12-2 21-13 26"/>
+        </g>
+    </svg>
+    <div class="container">
+        <div class="features-list">
+            {% for item in component.items %}
+                <div class="features-item">
+                    <span class="features-item__icon"><i class="{{ item.icon }}"></i></span>
+                    <strong>{{ item.title }}</strong>
+                    {% if item.text %}<small>{{ item.text }}</small>{% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

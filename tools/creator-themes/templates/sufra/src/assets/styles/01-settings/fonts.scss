@@ -1,0 +1,15 @@
+/* Sufra fonts — Taghmesa type system (Tajawal + Noto Kufi Arabic) */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;500;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap");
+
+body {
+  font-family: var(--font-sans);
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  font-family: var(--font-arabic);
+}

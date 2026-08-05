@@ -1,0 +1,39 @@
+{#
+| Variable             | Type     | Description                                  |
+|----------------------|----------|----------------------------------------------|
+| component            | object   | Merchant settings                            |
+| component.title      | ?string  | Section title                                |
+| component.items      | object[] | reviews                                      |
+| component.items[].name   | string |                                          |
+| component.items[].avatar | string |                                         |
+| component.items[].stars | number |                                          |
+| component.items[].text  | string |                                          |
+| position             | int      | Sorting number start from zero               |
+#}
+<section data-testid="store-home-testimonials" class="s-block s-block--testimonials s-block--alt-bg">
+    <div class="container">
+        {% if component.title %}
+            <div class="s-block__title">
+                <div class="right-side">
+                    <h2>{{ component.title }}</h2>
+                </div>
+            </div>
+        {% endif %}
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            {% for item in component.items %}
+                <div class="testimonial-card">
+                    <div class="testimonial-card__stars">
+                        {% for star in 1..item.stars %}
+                            <i class="sicon-star text-amber-400"></i>
+                        {% endfor %}
+                    </div>
+                    <p class="testimonial-card__text">{{ item.text }}</p>
+                    <div class="testimonial-card__author">
+                        <img src="{{ item.avatar }}" alt="{{ item.name }}" loading="lazy" class="w-10 h-10 rounded-full object-cover">
+                        <span class="font-bold">{{ item.name }}</span>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

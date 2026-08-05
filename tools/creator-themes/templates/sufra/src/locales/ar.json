@@ -1,0 +1,48 @@
+{
+    "blocks": {
+        "header": {
+            "cart": "السلة"
+        },
+        "appBanner": {
+            "download_now": "حمله الان"
+        },
+        "sufra": {
+            "fresh_daily": "مكونات طازجة يومياً",
+            "view_all": "عرض الكل",
+            "order_now": "اطلب الآن",
+    "browse_now": "تصفح الآن",
+            "special_offer": "عرض خاص",
+            "hero_eyebrow": "مطعم سفرة · أصالة النكهة العربية",
+            "hero_title_1": "مذاق أصيل",
+            "hero_title_em": "يُحضّر",
+            "hero_title_2": "بأيادٍ ماهرة",
+            "hero_desc": "أطباق تُحضّر بمكونات طازجة وأيادٍ ماهرة، تصل إلى بابك ساخنة.",
+            "prev": "السابق",
+            "next": "التالي",
+            "featured_eyebrow": "من القائمة",
+            "categories_eyebrow": "أقسامنا",
+            "categories_desc": "اختر ما يناسبك من أقسامنا المتنوعة، من المقبلات إلى الحلويات.",
+            "about_eyebrow": "حكايتنا",
+            "testimonials_eyebrow": "آراء عملائنا",
+            "daily_eyebrow": "قائمة اليوم",
+            "order_via_apps": "الطلب متاح عبر التطبيقات"
+        }
+    },
+    "pages": {
+        "cart": {
+            "cart_options": "خيارات السلة"
+        },
+        "order": {
+            "can_edit_or_delete_your_review_within": "يمكنك تعديل أو حذف تقييمك خلال",
+            "edit_period_ended": "تم انتهاء المدة المحددة لتعديل التقييم",
+            "delete_period_ended": "تم انتهاء المدة المحددة لحذف التقييم",
+            "days_since_added": "أيام من إضافته",
+            "option_name": "الخيار",
+            "option_content": "المحتوى"
+        }
+    },
+    "common": {
+        "bank_offer_sub_title_multiple": "ادفع قيمة مشترياتك عبر أحد البطاقات البنكة التالية واحصل على الخصم المحدد",
+        "bank_offer_sub_title_single": "ادفع قيمة مشترياتك عبر أحد بطاقات بنك :bank_name واحصل على خصم بنسبة "
+    }
+}

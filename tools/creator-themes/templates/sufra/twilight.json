@@ -1,0 +1,952 @@
+{
+    "name": {
+        "ar": "سُفرة",
+        "en": "sufra"
+    },
+    "description": {
+        "ar": "ثيم طعام عربي دافئ للمطاعم ومتاجر المأكولات، بتصميم يعكس مذاق الأطباق الشهية.",
+        "en": "A warm Arabic food theme for restaurants and food stores, designed to make every dish look delicious."
+    },
+    "repository": "https://github.com/Up-to-code/sufra",
+    "author_email": "support@creator-themes.dev",
+    "version": "1.0.0",
+    "features": [
+        "mega-menu",
+        "fonts",
+        "color",
+        "breadcrumb",
+        "unite-cards-height",
+        "filters",
+        "menu-images"
+    ],
+    "settings": [
+        {
+            "type": "static",
+            "format": "title",
+            "id": "static-label-header",
+            "value": "<div class='rounded-lg' style='background-color: #c2410c; display: flex; justify-content: center; align-items: center;padding: 15px;margin-bottom: 20px !important;'><h6 style='color: #ffffff;font-size: 15px; font-weight: bold;'> خيارات أعلى الصفحة </h6></div>",
+            "variant": "h6"
+        },
+        {
+            "id": "header_is_sticky",
+            "label": "تثبيت القائمة الرئيسية أعلى الصفحة عند التمرير",
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+            "id": "show_delivery_banner",
+            "label": "إظهار شريط التوصيل العلوي",
+            "description": "شريط يعرض رسالة توصيل مثل (توصيل سريع خلال 45 دقيقة)",
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+            "id": "delivery_banner_text",
+            "label": "نص شريط التوصيل",
+            "type": "string",
+            "icon": "sicon-format-text-alt",
+            "multilanguage": true,
+            "value": "🚚 توصيل سريع لجميع الأحياء خلال 45 دقيقة",
+            "required": false,
+            "format": "text",
+            "description": "النص الذي يظهر في الشريط العلوي للتوصيل",
+            "placeholder": "توصيل سريع خلال 45 دقيقة",
+            "minLength": 0,
+            "maxLength": 160
+        },
+        {
+            "id": "topnav_is_dark",
+            "label": "شريط علوي داكن",
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+            "id": "important_links",
+            "label": "عرض روابط الصفحات الهامة في الشريط العلوي",
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+            "type": "static",
+            "format": "title",
+            "id": "static-label-home",
+            "value": "<div class='rounded-lg' style='background-color: #c2410c; display: flex; justify-content: center; align-items: center;padding: 15px;margin-bottom: 20px !important;'><h6 style='color: #ffffff;font-size: 15px; font-weight: bold;'> خيارات الصفحة الرئيسية </h6></div>",
+            "variant": "h6"
+        },
+        {
+            "id": "home_show_section_titles",
+            "label": "إظهار عناوين الأقسام في الصفحة الرئيسية",
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+            "type": "static",
+            "format": "title",
+            "id": "static-label-product",
+            "value": "<div class='rounded-lg' style='background-color: #c2410c; display: flex; justify-content: center; align-items: center;padding: 15px;margin-bottom: 20px !important;'><h6 style='color: #ffffff;font-size: 15px; font-weight: bold;'> خيارات صفحة المنتج </h6></div>",
+            "variant": "h6"
+        },
+        {
+            "id": "product_show_breadcrumbs",
+            "label": "إظهار مسار التنقل في صفحة المنتج",
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+            "id": "product_index_show_breadcrumbs",
+            "label": "إظهار مسار التنقل في صفحة قائمة المنتجات",
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+            "id": "sticky_add_to_cart",
+            "label": "تثبيت زر الإضافة والكمية أسفل شاشة الجوال",
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+            "id": "show_tags",
+            "label": "إظهار وسوم المنتج",
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+            "id": "enable_add_product_toast",
+            "label": "تفعيل إشعار الإضافة للسلة المحسن",
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+            "id": "slider_background_size",
+            "type": "items",
+            "format": "dropdown-list",
+            "label": "طريقة عرض الصور في سلايدر صور المنتج",
+            "icon": "sicon-list",
+            "selected": [
+                {
+                    "label": "تغطية الصورة كامل المساحة (Cover)",
+                    "value": "cover",
+                    "key": "e9c8ea8f-c5c6-438e-9d45-3bce269afde4"
+                }
+            ],
+            "options": [
+                {
+                    "label": "تغطية الصورة كامل المساحة (Cover)",
+                    "value": "cover",
+                    "key": "e9c8ea8f-c5c6-438e-9d45-3bce269afde4"
+                },
+                {
+                    "label": "اظهار الصورة كاملةً في المنتصف (Contain)",
+                    "value": "contain",
+                    "key": "f4adec13-6e4c-433b-b141-b2807935ced9"
+                }
+            ],
+            "source": "Manual",
+            "required": true
+        },
+        {
+            "type": "static",
+            "format": "title",
+            "id": "static-label-footer",
+            "value": "<div class='rounded-lg' style='background-color: #c2410c; display: flex; justify-content: center; align-items: center;padding: 15px;margin-bottom: 20px !important;'><h6 style='color: #ffffff;font-size: 15px; font-weight: bold;'> خيارات أسفل الصفحة </h6></div>",
+            "variant": "h6"
+        },
+        {
+            "id": "footer_is_dark",
+            "label": "الوضع الداكن للفوتر",
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        }
+    ],
+    "components": [
+        {
+            "key": "09251f1c-6148-407e-a6c9-fee7ae2597c0",
+            "title": {
+                "en": "Hero Slider",
+                "ar": "السلايدر الرئيسي"
+            },
+            "icon": "sicon-image-carousel",
+            "path": "home.hero-slider",
+            "image": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=640&q=60",
+            "is_default": true,
+            "fields": [
+                {
+                    "type": "static",
+                    "format": "description",
+                    "id": "static-desc",
+                    "value": "<div><img class='w-full' src='https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=60'></div>"
+                },
+                {
+                    "id": "slides",
+                    "type": "collection",
+                    "format": "collection",
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 6,
+                    "item_label": "شريحة",
+                    "value": [
+                        {
+                            "slides.image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1400&q=60",
+                            "slides.title": "مذاق لا يُنسى",
+                            "slides.description": "أطباق تُحضّر بمكونات طازجة وأيادٍ ماهرة تصل إلى بابك ساخنة.",
+                            "slides.without_overlay": false
+                        },
+                        {
+                            "slides.image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1400&q=60",
+                            "slides.title": "عروض لا تُفوَّت",
+                            "slides.description": "طبق اليوم وعروض خاصة على أشهى الوجبات.",
+                            "slides.without_overlay": false
+                        },
+                        {
+                            "slides.image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=1400&q=60",
+                            "slides.title": "سفرة تجمع الأحبة",
+                            "slides.description": "أصالة النكهة العربية الأصيلة في كل طبق.",
+                            "slides.without_overlay": false
+                        }
+                    ],
+                    "fields": [
+                        {
+                            "type": "string",
+                            "icon": "sicon-image",
+                            "id": "slides.image",
+                            "label": "صورة البنر",
+                            "format": "image",
+                            "required": true,
+                            "description": "* المقاس المناسب للصورة هو 1400×600 بكسل"
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "label": "عنوان رئيسي",
+                            "multilanguage": true,
+                            "id": "slides.title",
+                            "required": false,
+                            "format": "text",
+                            "placeholder": "مذاق لا يُنسى...",
+                            "minLength": 0,
+                            "maxLength": 100
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-typography",
+                            "label": "نص توضيحي",
+                            "multilanguage": true,
+                            "id": "slides.description",
+                            "format": "textarea",
+                            "required": false,
+                            "placeholder": "وصف قصير للشريحة...",
+                            "minLength": 0,
+                            "maxLength": 255
+                        },
+                        {
+                            "type": "boolean",
+                            "icon": "sicon-toggle-off",
+                            "label": "إزالة طبقة التعتم",
+                            "id": "slides.without_overlay",
+                            "format": "switch",
+                            "required": false,
+                            "value": false,
+                            "selected": false
+                        },
+                        {
+                            "type": "items",
+                            "icon": "sicon-link",
+                            "label": "رابط زر الشريحة",
+                            "id": "slides.url",
+                            "value": null,
+                            "required": false,
+                            "format": "variable-list",
+                            "searchable": true,
+                            "source": "custom",
+                            "sources": [
+                                {
+                                    "label": "تصنيف",
+                                    "key": "categories",
+                                    "value": "categories"
+                                },
+                                {
+                                    "label": "منتج",
+                                    "key": "products",
+                                    "value": "products"
+                                },
+                                {
+                                    "label": "التخفيضات",
+                                    "key": "offers_link",
+                                    "value": "offers_link"
+                                },
+                                {
+                                    "label": "صفحة تعريفية",
+                                    "key": "pages",
+                                    "value": "pages"
+                                },
+                                {
+                                    "label": "رابط خارجي",
+                                    "key": "custom",
+                                    "value": "custom"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "0c7dff3f-0788-4c00-80d9-7521341dd7b6",
+            "title": {
+                "en": "Quick Menu Links",
+                "ar": "روابط القائمة السريعة"
+            },
+            "icon": "sicon-layout-grid-rearrange",
+            "path": "home.main-links",
+            "image": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=640&q=60",
+            "is_default": true,
+            "fields": [
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "عنوان القسم",
+                    "multilanguage": true,
+                    "id": "title",
+                    "value": "تصفّح القائمة",
+                    "required": false,
+                    "format": "text",
+                    "minLength": 0,
+                    "maxLength": 100
+                },
+                {
+                    "id": "links",
+                    "type": "collection",
+                    "format": "collection",
+                    "required": true,
+                    "minLength": 3,
+                    "maxLength": 8,
+                    "item_label": "عنصر",
+                    "value": [
+                        {
+                            "links.image": "https://images.unsplash.com/photo-1577805947697-89e18249d767?auto=format&fit=crop&w=640&q=60",
+                            "links.icon": "sicon-utensils",
+                            "links.title": "المقبلات",
+                            "links.url__type": "categories"
+                        },
+                        {
+                            "links.image": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=640&q=60",
+                            "links.icon": "sicon-fire",
+                            "links.title": "المشاوي",
+                            "links.url__type": "categories"
+                        },
+                        {
+                            "links.image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=640&q=60",
+                            "links.icon": "sicon-baguette",
+                            "links.title": "الأطباق الرئيسية",
+                            "links.url__type": "categories"
+                        },
+                        {
+                            "links.image": "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=640&q=60",
+                            "links.icon": "sicon-cake",
+                            "links.title": "الحلويات",
+                            "links.url__type": "categories"
+                        }
+                    ],
+                    "fields": [
+                        {
+                            "type": "string",
+                            "icon": "sicon-image",
+                            "id": "links.image",
+                            "label": "صورة الفئة",
+                            "format": "image",
+                            "required": true,
+                            "description": "* المقاس المناسب هو 640×800 بكسل (صورة عمودية)"
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "label": "أيقونة العنصر",
+                            "id": "links.icon",
+                            "value": "sicon-store2",
+                            "required": false,
+                            "format": "icon"
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "multilanguage": true,
+                            "id": "links.title",
+                            "value": null,
+                            "required": false,
+                            "format": "text",
+                            "placeholder": "اسم الطبق أو القسم...",
+                            "minLength": 2,
+                            "maxLength": 80
+                        },
+                        {
+                            "type": "items",
+                            "icon": "sicon-link",
+                            "label": "الرابط",
+                            "id": "links.url",
+                            "value": null,
+                            "required": false,
+                            "format": "variable-list",
+                            "searchable": true,
+                            "source": "custom",
+                            "sources": [
+                                {
+                                    "label": "منتج",
+                                    "key": "products",
+                                    "value": "products"
+                                },
+                                {
+                                    "label": "تصنيف",
+                                    "key": "categories",
+                                    "value": "categories"
+                                },
+                                {
+                                    "label": "التخفيضات",
+                                    "key": "offers_link",
+                                    "value": "offers_link"
+                                },
+                                {
+                                    "label": "صفحة تعريفية",
+                                    "key": "pages",
+                                    "value": "pages"
+                                },
+                                {
+                                    "label": "رابط خارجي",
+                                    "key": "custom",
+                                    "value": "custom"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "eb48d353-7fc3-46d3-936d-0e6cd08d14c3",
+            "title": {
+                "en": "Featured Dishes",
+                "ar": "أطباق مميزة"
+            },
+            "icon": "sicon-chef",
+            "path": "home.featured-meals",
+            "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=640&q=60",
+            "is_default": true,
+            "fields": [
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "عنوان القسم",
+                    "multilanguage": true,
+                    "id": "title",
+                    "value": "أطباق مميزة",
+                    "required": false,
+                    "format": "text",
+                    "minLength": 0,
+                    "maxLength": 100
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-typography",
+                    "label": "نص توضيحي",
+                    "multilanguage": true,
+                    "id": "description",
+                    "value": "اختيارات الشيف المفضلة لعملائنا",
+                    "format": "textarea",
+                    "required": false,
+                    "minLength": 0,
+                    "maxLength": 255
+                },
+                {
+                    "type": "items",
+                    "icon": "sicon-link",
+                    "label": "رابط عرض الكل",
+                    "id": "display_all_url",
+                    "value": [],
+                    "required": false,
+                    "format": "variable-list",
+                    "searchable": true,
+                    "source": "custom",
+                    "sources": [
+                        {
+                            "label": "التخفيضات",
+                            "key": "offers_link",
+                            "value": "offers_link"
+                        },
+                        {
+                            "label": "رابط خارجي",
+                            "key": "custom",
+                            "value": "custom"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "4aef8f78-bc0a-4d2e-b291-720b32be5a86",
+            "title": {
+                "en": "Today's Menu",
+                "ar": "قائمة اليوم"
+            },
+            "icon": "sicon-cutlery",
+            "path": "home.daily-menu",
+            "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=640&q=60",
+            "is_default": true,
+            "fields": [
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "عنوان القسم",
+                    "multilanguage": true,
+                    "id": "title",
+                    "value": "قائمة اليوم",
+                    "required": false,
+                    "format": "text",
+                    "minLength": 0,
+                    "maxLength": 100
+                },
+                {
+                    "id": "items",
+                    "type": "collection",
+                    "format": "collection",
+                    "required": true,
+                    "minLength": 2,
+                    "maxLength": 8,
+                    "item_label": "صنف",
+                    "value": [
+                        {
+                            "items.image": "https://images.unsplash.com/photo-1541518763669-27fef04b14ea?auto=format&fit=crop&w=640&q=60",
+                            "items.title": "منسف",
+                            "items.description": "أرز، لحم غنم، لبن جميد — الطبق الوطني",
+                            "items.url__type": "offers_link"
+                        },
+                        {
+                            "items.image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=640&q=60",
+                            "items.title": "كبسة دجاج",
+                            "items.description": "أرز بسمتي مع دجاج متبل",
+                            "items.url__type": "offers_link"
+                        },
+                        {
+                            "items.image": "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?auto=format&fit=crop&w=640&q=60",
+                            "items.title": "مشاوي مشكلة",
+                            "items.description": "شيش طاووق، كباب، كفتة",
+                            "items.url__type": "offers_link"
+                        },
+                        {
+                            "items.image": "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=640&q=60",
+                            "items.title": "باستا",
+                            "items.description": "صوصات طازجة تحضّر يومياً",
+                            "items.url__type": "offers_link"
+                        }
+                    ],
+                    "fields": [
+                        {
+                            "type": "string",
+                            "icon": "sicon-image",
+                            "id": "items.image",
+                            "label": "صورة الصنف",
+                            "format": "image",
+                            "required": true,
+                            "description": "* المقاس المناسب للصورة هو 640×480 بكسل"
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "multilanguage": true,
+                            "id": "items.title",
+                            "required": true,
+                            "format": "text",
+                            "placeholder": "اسم الطبق...",
+                            "minLength": 2,
+                            "maxLength": 80
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-typography",
+                            "multilanguage": true,
+                            "id": "items.description",
+                            "required": false,
+                            "format": "textarea",
+                            "placeholder": "وصف الطبق...",
+                            "minLength": 0,
+                            "maxLength": 255
+                        },
+                        {
+                            "type": "items",
+                            "icon": "sicon-link",
+                            "label": "الرابط",
+                            "id": "items.url",
+                            "value": null,
+                            "required": false,
+                            "format": "variable-list",
+                            "searchable": true,
+                            "source": "custom",
+                            "sources": [
+                                {
+                                    "label": "تصنيف",
+                                    "key": "categories",
+                                    "value": "categories"
+                                },
+                                {
+                                    "label": "منتج",
+                                    "key": "products",
+                                    "value": "products"
+                                },
+                                {
+                                    "label": "التخفيضات",
+                                    "key": "offers_link",
+                                    "value": "offers_link"
+                                },
+                                {
+                                    "label": "رابط خارجي",
+                                    "key": "custom",
+                                    "value": "custom"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "08bbf314-409b-4d56-911b-99bd28ad053b",
+            "title": {
+                "en": "Special Offer",
+                "ar": "عرض خاص"
+            },
+            "icon": "sicon-timer",
+            "path": "home.special-offer",
+            "image": "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=640&q=60",
+            "is_default": true,
+            "fields": [
+                {
+                    "type": "string",
+                    "icon": "sicon-image",
+                    "value": "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=1400&q=60",
+                    "label": "صورة الخلفية",
+                    "id": "background",
+                    "format": "image",
+                    "required": true,
+                    "description": "* المقاس المناسب للصورة هو 1400×500 بكسل"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "عنوان رئيسي",
+                    "multilanguage": true,
+                    "id": "title",
+                    "value": "عرض اليوم: ٢ وجبات بسعر وجبة واحدة",
+                    "required": false,
+                    "format": "text",
+                    "minLength": 0,
+                    "maxLength": 80
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-typography",
+                    "label": "نص توضيحي",
+                    "multilanguage": true,
+                    "id": "description",
+                    "value": "لفترة محدودة أو حتى نفاد الكمية",
+                    "format": "textarea",
+                    "required": false,
+                    "minLength": 0,
+                    "maxLength": 256
+                },
+                {
+                    "type": "items",
+                    "icon": "sicon-link",
+                    "label": "رابط العرض",
+                    "id": "display_all_url",
+                    "value": [],
+                    "required": false,
+                    "format": "variable-list",
+                    "searchable": true,
+                    "source": "custom",
+                    "sources": [
+                        {
+                            "label": "التخفيضات",
+                            "key": "offers_link",
+                            "value": "offers_link"
+                        },
+                        {
+                            "label": "رابط خارجي",
+                            "key": "custom",
+                            "value": "custom"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "4dd5a673-1546-44a4-8554-4b9f1fc5d71c",
+            "title": {
+                "en": "About the Chef",
+                "ar": "قصة المطبخ"
+            },
+            "icon": "sicon-user-heart",
+            "path": "home.about-chef",
+            "image": "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=640&q=60",
+            "is_default": true,
+            "fields": [
+                {
+                    "type": "string",
+                    "icon": "sicon-image",
+                    "value": "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=900&q=60",
+                    "label": "الصورة",
+                    "id": "image",
+                    "format": "image",
+                    "required": true,
+                    "description": "* المقاس المناسب للصورة هو 900×700 بكسل"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "العنوان",
+                    "multilanguage": true,
+                    "id": "title",
+                    "value": "حكاية الطاهي",
+                    "required": false,
+                    "format": "text",
+                    "minLength": 0,
+                    "maxLength": 100
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-typography",
+                    "label": "النص",
+                    "multilanguage": true,
+                    "id": "description",
+                    "value": "من مطبخنا إليك.. نستخدم مكونات طازجة يومياً ونطبّق وصفات العائلة الأصيلة التي توارثناها جيلاً بعد جيل.",
+                    "format": "textarea",
+                    "required": false,
+                    "minLength": 0,
+                    "maxLength": 1000
+                }
+            ]
+        },
+        {
+            "key": "b03f6773-3ae2-4178-a376-d6893f2cf9f9",
+            "title": {
+                "en": "Customer Reviews",
+                "ar": "آراء عملائنا"
+            },
+            "icon": "sicon-chat-bubbles",
+            "path": "home.testimonials",
+            "image": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=640&q=60",
+            "is_default": true,
+            "fields": [
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "عنوان القسم",
+                    "multilanguage": true,
+                    "id": "title",
+                    "value": "ماذا قال عملاؤنا",
+                    "required": false,
+                    "format": "text",
+                    "minLength": 0,
+                    "maxLength": 100
+                },
+                {
+                    "id": "items",
+                    "type": "collection",
+                    "format": "collection",
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 8,
+                    "item_label": "رأي",
+                    "value": [
+                        {
+                            "items.name": "ندى الحسيني",
+                            "items.avatar": "https://cdn.assets.salla.network/prod/stores/themes/default/assets/images/avatar_female.png",
+                            "items.stars": 5,
+                            "items.text": "ألذ كبسة جربتها، التوصيل كان أسرع من المتوقع! 🔥"
+                        },
+                        {
+                            "items.name": "خالد الأحمد",
+                            "items.avatar": "https://cdn.assets.salla.network/prod/stores/themes/default/assets/images/avatar_male.png",
+                            "items.stars": 5,
+                            "items.text": "طلبت منسف للعائلة وكان الكل سعيد. طعم البيت بالضبط 👏"
+                        },
+                        {
+                            "items.name": "سارة المطيري",
+                            "items.avatar": "https://cdn.assets.salla.network/prod/stores/themes/default/assets/images/avatar_female.png",
+                            "items.stars": 5,
+                            "items.text": "المكونات طازجة والحلى موووفر.. تجربة تستحق التكرار ❤️"
+                        }
+                    ],
+                    "fields": [
+                        {
+                            "id": "items.name",
+                            "type": "string",
+                            "format": "text",
+                            "label": "اسم العميل",
+                            "placeholder": "اسم العميل",
+                            "icon": "sicon-format-text-alt",
+                            "value": null,
+                            "multilanguage": false,
+                            "required": false
+                        },
+                        {
+                            "id": "items.avatar",
+                            "type": "string",
+                            "format": "image",
+                            "label": "صورة العميل",
+                            "description": "المقاس المناسب للصورة هو 68*68 بكسل",
+                            "icon": "sicon-image",
+                            "value": null,
+                            "required": true
+                        },
+                        {
+                            "id": "items.stars",
+                            "type": "number",
+                            "format": "integer",
+                            "label": "عدد النجوم",
+                            "labelHTML": "من 1 إلى 5",
+                            "placeholder": "القيمة",
+                            "icon": "sicon-pencil-ruler",
+                            "value": 5,
+                            "required": false,
+                            "minimum": 1,
+                            "maximum": 5
+                        },
+                        {
+                            "id": "items.text",
+                            "type": "string",
+                            "format": "textarea",
+                            "label": "نص التقييم",
+                            "placeholder": "رأي العميل...",
+                            "icon": "sicon-typography",
+                            "value": null,
+                            "multilanguage": false,
+                            "required": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "bcc67bc7-a874-473e-91e5-853566b68b84",
+            "title": {
+                "en": "Store Features",
+                "ar": "ميزات المتجر"
+            },
+            "icon": "sicon-truck",
+            "path": "home.store-features",
+            "image": "https://images.unsplash.com/photo-1606787366850-de6330128bfc?auto=format&fit=crop&w=640&q=60",
+            "is_default": true,
+            "fields": [
+                {
+                    "id": "items",
+                    "type": "collection",
+                    "format": "collection",
+                    "required": true,
+                    "minLength": 3,
+                    "maxLength": 6,
+                    "item_label": "ميزة",
+                    "value": [
+                        {
+                            "items.icon": "sicon-truck",
+                            "items.title": "توصيل سريع",
+                            "items.text": "نوصل طلبك ساخناً خلال 45 دقيقة"
+                        },
+                        {
+                            "items.icon": "sicon-leaf",
+                            "items.title": "مكونات طازجة",
+                            "items.text": "مشتريات يومية من مزارع موثوقة"
+                        },
+                        {
+                            "items.icon": "sicon-money-bill",
+                            "items.title": "الدفع عند الاستلام",
+                            "items.text": "ادفع وأنت مطمئن بعد استلام طلبك"
+                        },
+                        {
+                            "items.icon": "sicon-shield-check",
+                            "items.title": "ضمان الجودة",
+                            "items.text": "نعوّضك فوراً إذا لم ينل الطبق رضاك"
+                        }
+                    ],
+                    "fields": [
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "label": "أيقونة الميزة",
+                            "id": "items.icon",
+                            "value": "sicon-store2",
+                            "required": false,
+                            "format": "icon"
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "multilanguage": true,
+                            "id": "items.title",
+                            "value": null,
+                            "required": false,
+                            "format": "text",
+                            "placeholder": "عنوان الميزة...",
+                            "minLength": 2,
+                            "maxLength": 80
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-typography",
+                            "multilanguage": true,
+                            "id": "items.text",
+                            "value": null,
+                            "required": false,
+                            "format": "textarea",
+                            "placeholder": "وصف الميزة...",
+                            "minLength": 0,
+                            "maxLength": 255
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "support_url": "https://salla.com/"
+}

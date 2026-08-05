@@ -1,0 +1,48 @@
+{
+    "blocks": {
+        "header": {
+            "cart": "Cart"
+        },
+        "appBanner": {
+            "download_now": "download now"
+        },
+        "sufra": {
+            "fresh_daily": "Fresh ingredients, daily",
+            "view_all": "View all",
+            "order_now": "Order now",
+    "browse_now": "Browse now",
+            "special_offer": "Special offer",
+            "hero_eyebrow": "Sufra Restaurant · Authentic Arabic flavors",
+            "hero_title_1": "A taste of",
+            "hero_title_em": "authentic",
+            "hero_title_2": "flavors, crafted with care",
+            "hero_desc": "Dishes prepared with fresh ingredients and skilled hands, delivered hot to your door.",
+            "prev": "Previous",
+            "next": "Next",
+            "featured_eyebrow": "From the menu",
+            "categories_eyebrow": "Our categories",
+            "categories_desc": "Pick what suits you from our varied sections, from appetizers to desserts.",
+            "about_eyebrow": "Our story",
+            "testimonials_eyebrow": "What our customers say",
+            "daily_eyebrow": "Today's menu",
+            "order_via_apps": "Ordering available via apps"
+        }
+    },
+    "pages": {
+        "cart": {
+            "cart_options": "Cart Options"
+        },
+        "order": {
+            "can_edit_or_delete_your_review_within": "You can edit or delete your review within",
+            "edit_period_ended": "The period to edit the review has ended",
+            "delete_period_ended": "The period to delete the review has ended",
+            "days_since_added": "days since it was added",
+            "option_name": "Option name",
+            "option_content": "Content"
+        }
+    },
+    "common": {
+        "bank_offer_sub_title_multiple": "Pay for your purchases via one of the following bank cards and get the specified discount",
+        "bank_offer_sub_title_single": "Pay for your purchases via :bank_name bank card and get discount"
+    }
+}

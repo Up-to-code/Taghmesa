@@ -1,0 +1,55 @@
+/*
+  Taghmesa: About the kitchen
+*/
+.s-block--about{
+  .about-chef__media{
+    position: relative;
+
+    &::before{
+      content: '';
+      position: absolute;
+      inset-inline-start: 16px;
+      inset-inline-end: -16px;
+      top: 16px;
+      bottom: -16px;
+      border: 1.5px dashed color-mix(in srgb, var(--teal) 45%, transparent);
+      border-radius: 24px;
+      pointer-events: none;
+    }
+
+    img{
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .about-chef__badge{
+      @apply absolute bottom-4 rtl:right-4 ltr:left-4 w-14 h-14 rounded-full flex items-center justify-center;
+      background: var(--teal);
+      color: #fff;
+      z-index: 2;
+
+      i{
+        @apply text-2xl;
+      }
+    }
+  }
+
+  .s-block__eyebrow-title{
+    @apply text-2xl sm:text-3xl font-bold relative pb-4 mb-6;
+    color: var(--char);
+    font-family: var(--font-arabic);
+    font-weight: 900;
+
+    &:after{
+      content: '';
+      @apply absolute bottom-0 rtl:right-0 ltr:left-0 h-1 rounded-full;
+      width: 42px;
+      background: var(--clay);
+    }
+  }
+
+  .about-chef__text{
+    color: var(--text);
+  }
+}

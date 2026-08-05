@@ -1,0 +1,93 @@
+
+// Sufra palette — Taghmesa design system (تغميسة)
+$main-color: var(--color-primary);
+$infinte-color: var(--infinte-color);
+$main-text-color: var(--main-text-color);
+
+:root {
+  --infinte-color: #c9c9c9;
+  --main-text-color: #263033;
+
+  /* current (fallback — overridden at runtime by Salla theme color) */
+  --color-primary: #0095a7;
+  --color-primary-d: #007e8f;
+  --color-primary-l: #0fb4c7;
+  --color-primary-reverse: #ffffff;
+  --color-text: #566a70;
+  --bg-gray: #c6c7ce1a;
+  --color-grey: #e7f4f5;
+  --color-light-grey: #e7f4f5;
+
+  /* Taghmesa tokens */
+  --teal: #0095a7;
+  --teal-deep: #007e8f;
+  --deep: #103338;
+  --clay: #c88666;
+  --aqua: #e7f4f5;
+  --bg: #f7faf9;
+  --surface: #ffffff;
+  --char: #263033;
+  --text: #566a70;
+  --muted: #758a8f;
+  --border: #e5e4dc;
+  --shadow: 0 12px 32px rgba(16, 51, 56, 0.08);
+  --shadow-sm: 0 1px 2px rgba(16, 51, 56, 0.05);
+  --shadow-lg: 0 14px 28px rgba(4, 59, 62, 0.12);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 18px;
+
+  /* font-size */
+  --font-sm: 0.8685714286rem;
+  /* font-family */
+  --font-arabic: "Noto Kufi Arabic", "Tajawal", "DINNextLTArabic", "Segoe UI", Arial, sans-serif;
+  --font-sans: "Tajawal", "Noto Kufi Arabic", "Segoe UI", Arial, sans-serif;
+  --font-main: var(--font-sans);
+
+  /* plugins */
+  --mm-ocd-width: calc(100% - 51px);
+}
+
+/* Taghmesa dark mode */
+[data-theme="dark"] {
+  --bg: #102326;
+  --surface: #0c1d20;
+  --deep: #082b30;
+  --aqua: #173d40;
+  --char: #edf7f7;
+  --text: #9cc3c6;
+  --muted: #7b9ea2;
+  --border: rgba(255, 255, 255, 0.1);
+  --shadow: 0 12px 34px rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 14px 28px rgba(0, 0, 0, 0.45);
+  --color-grey: #173d40;
+  --color-light-grey: #173d40;
+  --main-text-color: #edf7f7;
+  --color-text: #9cc3c6;
+  --infinte-color: #7b9ea2;
+}
+
+html {
+  background: var(--bg);
+}
+
+body {
+  background: var(--bg);
+  color: var(--char);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  font-family: var(--font-arabic);
+  font-weight: 900;
+  color: var(--char);
+}

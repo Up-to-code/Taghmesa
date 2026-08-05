@@ -1,0 +1,32 @@
+{#
+| Variable                   | Type     | Description                                     |
+|----------------------------|----------|-------------------------------------------------|
+| component                  | object   | Merchant settings                               |
+| component.title            | ?string  | Section title                                   |
+| component.description      | ?string  | Section subtitle                                |
+| component.display_all_url  | string   | "View all" link                                 |
+| position                   | int      | Sorting number start from zero                  |
+#}
+<section data-testid="store-home-featured-meals" class="s-block s-block--featured featured-section">
+    <div class="container">
+        {% if component.title or component.description %}
+            <div class="section-title featured-heading">
+                <div>
+                    <span>{{ trans('blocks.sufra.featured_eyebrow') }}</span>
+                    {% if component.title %}<h2>{{ component.title }}</h2>{% endif %}
+                </div>
+                {% if component.description %}<p>{{ component.description }}</p>{% endif %}
+                {% if component.display_all_url %}
+                    <a href="{{ component.display_all_url }}" class="section-title__link">{{ trans('blocks.sufra.view_all') }}
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                    </a>
+                {% endif %}
+            </div>
+        {% endif %}
+        <salla-products-slider
+            data-testid="store-featured-products-slider"
+            source="featured"
+            block-title
+            display-all-url></salla-products-slider>
+    </div>
+</section>

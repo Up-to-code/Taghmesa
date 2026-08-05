@@ -1,0 +1,29 @@
+{#
+| Variable                   | Type     | Description                                    |
+|----------------------------|----------|------------------------------------------------|
+| component                  | object   | Merchant settings                              |
+| component.background       | string   | Background image url                           |
+| component.title            | ?string  |                                                |
+| component.description      | ?string  |                                                |
+| component.display_all_url  | string   | CTA link                                       |
+| position                   | int      | Sorting number start from zero                 |
+#}
+<section data-testid="store-home-special-offer" class="s-block s-block--offer-banner">
+    <div class="container">
+        <div class="offer-banner">
+            {% if component.background %}
+                <div class="offer-banner__bg" style="background-image: url({{ component.background }});"></div>
+            {% endif %}
+            <div class="offer-banner__content">
+                <span class="offer-banner__tag">{{ trans('blocks.sufra.special_offer') }}</span>
+                {% if component.title %}<h2 class="offer-banner__title">{{ component.title }}</h2>{% endif %}
+                {% if component.description %}<p class="offer-banner__desc">{{ component.description }}</p>{% endif %}
+                {% if component.display_all_url %}
+                    <a href="{{ component.display_all_url }}" class="btn btn--primary btn--rounded-full offer-banner__cta">
+                        {{ trans('blocks.sufra.order_now') }}
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>

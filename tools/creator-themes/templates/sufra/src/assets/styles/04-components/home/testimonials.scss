@@ -1,0 +1,42 @@
+/*
+  Taghmesa: Testimonials
+*/
+.s-block--testimonials{
+  background: var(--surface);
+  border-block: 1px solid var(--border);
+  padding-block: clamp(36px, 6vw, 72px);
+}
+
+.testimonial-card{
+  @apply rounded-large p-6 flex flex-col gap-4;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+
+  &__stars{
+    @apply flex gap-1 text-lg;
+    color: #f5b301;
+  }
+
+  &__text{
+    @apply leading-7 flex-1;
+    color: var(--text);
+    font-size: 14px;
+  }
+
+  &__author{
+    @apply flex items-center gap-3 pt-4 border-t;
+    border-color: var(--border);
+
+    img{
+      @apply w-10 h-10 rounded-full object-cover;
+    }
+
+    span{
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--deep);
+      font-family: var(--font-arabic);
+    }
+  }
+}

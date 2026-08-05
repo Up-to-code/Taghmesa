@@ -1,0 +1,16 @@
+/*
+  Taghmesa: Featured products section
+*/
+.featured-section{
+  padding-block: clamp(36px, 6vw, 72px);
+  background: var(--bg);
+}
+
+.featured-heading{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px 20px;
+  margin-bottom: 32px;
+}

@@ -1,0 +1,63 @@
+{#
+| Variable                       | Type     | Description                                                                  |
+|--------------------------------|----------|------------------------------------------------------------------------------|
+| component                      | object   | Merchant settings for fields from twilight.json `component` section           |
+| component.slides[].image       | string   | Image url                                                                     |
+| component.slides[].title       | ?string  |                                                                              |
+| component.slides[].description | ?string  |                                                                              |
+| component.slides[].without_overlay | bool |                                                                              |
+| component.slides[].url             | ?string | Slide CTA link                                                          |
+| position                       | int      | Sorting number start from zero                                               |
+#}
+<section data-testid="store-home-hero" class="s-block s-block--hero-slider hero">
+    <div class="hero-doodles" aria-hidden="true">
+        <svg class="hero-doodle hero-doodle--citrus" viewBox="0 0 70 70" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="35" cy="35" r="26"/><path d="M35 9v52M9 35h52M17 17l36 36m0-36L17 53"/></svg>
+        <svg class="hero-doodle hero-doodle--leaf" viewBox="0 0 82 82" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M14 68c18-15 34-31 48-52M32 48c-13 0-21-7-23-18 12-2 21 3 26 14M45 34c-1-12 6-20 17-23 3 12-2 21-13 26"/></svg>
+        <svg class="hero-doodle hero-doodle--chilli" viewBox="0 0 78 78" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M26 62c14-8 30-22 34-40M44 30c2-10 10-16 18-18-2 8-6 14-14 18"/></svg>
+    </div>
+
+    <div class="container">
+        <div class="hero-inner">
+            <div class="hero-intro">
+                <span class="hero-intro__eyebrow">{{ store.name }}{% if store.slogan %} · {{ store.slogan }}{% endif %}</span>
+                <h1 class="hero-intro__title">
+                    {{ trans('blocks.sufra.hero_title_1') }} <em>{{ trans('blocks.sufra.hero_title_em') }}</em>
+                    <br>{{ trans('blocks.sufra.hero_title_2') }}
+                </h1>
+                <p class="hero-intro__desc">{{ trans('blocks.sufra.hero_desc') }}</p>
+                <salla-search data-testid="store-home-search" placeholder oval height="48"></salla-search>
+            </div>
+
+            <div class="hero-carousel" data-testid="store-home-hero-carousel">
+                <div class="hero-carousel__viewport" data-carousel-viewport>
+                    {% for slide in component.slides %}
+                        <div class="hero-slide tone-{{ cycle(['clay', 'teal', 'gold'], loop.index0) }}">
+                            <div class="hero-slide__body">
+                                <small class="hero-slide__eyebrow">{{ trans('blocks.sufra.fresh_daily') }}</small>
+                                {% if slide.title %}<strong class="hero-slide__title">{{ slide.title }}</strong>{% endif %}
+                                {% if slide.description %}<p class="hero-slide__desc">{{ slide.description }}</p>{% endif %}
+                                {% if slide.url %}<a class="hero-slide__cta" href="{{ slide.url }}">{{ trans('blocks.sufra.browse_now') }}</a>{% endif %}
+                            </div>
+                            <img class="hero-slide__img" src="{{ slide.image }}" alt="{{ slide.title }}" loading="lazy">
+                        </div>
+                    {% endfor %}
+                </div>
+                {% if component.slides|length > 1 %}
+                    <div class="hero-carousel__controls">
+                        <button type="button" class="hero-carousel__btn" data-carousel-prev aria-label="{{ trans('blocks.sufra.prev') }}">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                        </button>
+                        <div class="hero-carousel__dots" data-carousel-dots>
+                            {% for slide in component.slides %}
+                                <button type="button" class="hero-carousel__dot {% if loop.first %}active{% endif %}" data-index="{{ loop.index0 }}" aria-label="Slide {{ loop.index }}"></button>
+                            {% endfor %}
+                        </div>
+                        <button type="button" class="hero-carousel__btn" data-carousel-next aria-label="{{ trans('blocks.sufra.next') }}">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                        </button>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>

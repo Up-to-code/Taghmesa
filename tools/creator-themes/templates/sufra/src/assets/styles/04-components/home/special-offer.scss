@@ -1,0 +1,91 @@
+/*
+  Taghmesa: Special offer banner (deep teal panel)
+*/
+.s-block--offer-banner{
+  margin-top: 0;
+
+  .container{
+    padding-block: clamp(8px, 2vw, 16px);
+  }
+}
+
+.offer-banner{
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--deep), #0a2a30);
+  color: #fff;
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(40px, 7vw, 80px) 24px;
+  box-shadow: var(--shadow-lg);
+
+  &::before{
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+    background-size: 18px 18px;
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent 70%);
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent 70%);
+  }
+
+  &__bg{
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.25;
+  }
+
+  &__content{
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  &__tag{
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    color: #ffe1cf;
+    background: rgba(200, 134, 102, 0.25);
+    border: 1px solid rgba(255, 225, 207, 0.3);
+    border-radius: 999px;
+    padding: 6px 16px;
+  }
+
+  &__title{
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 900;
+    color: #fff;
+    font-family: var(--font-arabic);
+    margin: 0;
+  }
+
+  &__desc{
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 15px;
+    line-height: 1.9;
+    margin: 0;
+  }
+
+  &__cta{
+    margin-top: 8px;
+    background: var(--teal);
+    border: none;
+    color: #fff;
+
+    &:hover{
+      opacity: 0.9;
+    }
+  }
+}

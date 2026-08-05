@@ -1,0 +1,347 @@
+/*
+  Block Title (generic — used across twilight blocks)
+*/
+.s-block{
+  &__title{
+    @apply center-between mb-4 md:mb-8;
+
+    .right-side{
+      @apply rtl:pl-8 ltr:pr-8;
+    }
+
+    h2{
+      @apply text-lg font-bold relative leading-[1.2];
+      color: var(--char);
+      font-family: var(--font-arabic);
+      font-weight: 900;
+    }
+
+    p{
+      @apply text-sm opacity-60 mt-2 line-clamp-1 sm:line-clamp-2 rtl:md:pl-16 ltr:md:pr-16;
+      color: var(--text);
+    }
+
+    &-nav{
+      @apply hidden sm:flex ltr:flex-row-reverse rtl:space-x-reverse space-x-2.5 rtl:mr-6 ltr:ml-6;
+    }
+  }
+
+  &__display-all{
+    @apply inline-flex items-center gap-2 text-sm font-bold opacity-80 hover:opacity-100;
+    color: var(--teal);
+
+    i{
+      @apply ltr:rotate-180 inline-block;
+    }
+  }
+}
+
+/* Sufra: alternate background section */
+.s-block--alt-bg{
+  @apply bg-[color:var(--color-grey)] py-10 sm:py-14 mt-0;
+}
+
+/*
+  Taghmesa: Section title (eyebrow + h2 + desc + link)
+*/
+.section-title{
+  @apply mb-8;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px 20px;
+
+  span{
+    display: block;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--teal);
+    margin-bottom: 6px;
+  }
+
+  h2{
+    font-size: 30px;
+    font-weight: 900;
+    line-height: 1.25;
+    color: var(--char);
+    font-family: var(--font-arabic);
+    margin: 0;
+  }
+
+  p{
+    font-size: 14px;
+    color: var(--muted);
+    max-width: 380px;
+    margin: 0;
+  }
+
+  &__link{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--teal);
+    white-space: nowrap;
+
+    &:hover{
+      color: var(--teal-deep);
+    }
+
+    svg{
+      flex-shrink: 0;
+
+      [dir="ltr"] &{
+        transform: scaleX(-1);
+      }
+    }
+  }
+}
+
+/*
+  Generic s-block containers
+*/
+.s-block {
+  @apply mt-8 sm:mt-16;
+
+  &--full-bg{
+    + footer,
+    + .s-block--full-bg,
+    &:first-of-type{
+      @apply mt-0;
+    }
+
+    + .merge-with-top-component{
+      @apply -mt-28 md:-mt-32 z-1;
+
+      .s-slider-block__title {
+        color: #fff !important;
+        @apply text-center sm:text-start sm:mb-4;
+      }
+    }
+
+    + .merged-has-no-title{
+      @apply -mt-16 md:-mt-[74px];
+
+      .s-slider-block__title {
+        @apply sm:mb-0;
+      }
+    }
+  }
+
+  &--categories{
+    @apply relative overflow-hidden;
+
+    &__title{
+      @apply font-bold text-base sm:text-lg sm:mb-4 relative z-1 min-h-[28px];
+    }
+  }
+}
+
+.s-blocks-wrapper{
+  @apply empty:hidden;
+
+  :not(.s-information-page) .s-block{
+    @apply first:mt-0;
+  }
+
+  &:empty {
+    + .container--products-list,
+    + .container--product-details{
+      @apply mt-0 #{!important}
+    }
+  }
+
+  &.s-information-page{
+    &.s-block.s-block--full-bg:first-of-type{
+      @apply mt-0;
+    }
+  }
+}
+
+.container--breadcrumbs{
+  &,
+  & + .s-blocks-wrapper{
+    @apply mt-0 #{!important}
+  }
+}
+
+/*
+  Banner / offers slider blocks (generic twilight)
+*/
+.slider-with-bg-block{
+  @apply bg-gray-100 pb-8 sm:pb-16 mt-8 sm:mt-16 first-of-type:mt-0;
+
+  .slider-bg{
+    @apply h-96 sm:h-116 transition-opacity bg-center bg-cover text-white relative;
+
+    &:before{
+      content: '';
+      @apply h-full w-full bg-black opacity-60 absolute top-0 left-0;
+    }
+  }
+
+  .s-slider-block{
+    &__title-right{
+      @apply hidden;
+    }
+
+    &__title-left{
+      @apply w-full flex justify-between;
+    }
+
+    &__display-all{
+      @apply block btn btn--outline light btn--rounded-full;
+      @apply grow-0 bg-transparent text-white #{!important};
+    }
+  }
+}
+
+/* Full banner block */
+.full-banner-entry {
+  @apply row-span-2 h-80 md:h-96 lg:h-116 xl:h-132 bg-stone-200 transition-opacity hover:opacity-95 bg-center bg-cover text-white text-center p-5 overflow-hidden relative;
+
+  &::after,
+  &::before {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: -93%;
+    content: "";
+    background: var(--color-primary);
+    position: absolute;
+    transition: all 0.3s ease-in-out;
+    transform: rotate(220deg) translateY(-50%) translateX(33%);
+    opacity: 0.25;
+  }
+
+  &::before {
+    background: #fff;
+    right: auto;
+    transform: rotate(220deg) translateY(-40%) translateX(0);
+
+    [dir="ltr"] & {
+      left: -52%;
+    }
+  }
+
+  @media (max-width: 1330px) {
+    &::after {
+      top: -50%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    &::before {
+      top: 20%;
+    }
+
+    &::after {
+      top: -80%;
+    }
+  }
+}
+
+/* Square Banner Block */
+.banner-entry{
+  @apply h-[200px] text-white text-center p-3 xs:p-4 rounded-md overflow-hidden relative bg-cover bg-no-repeat bg-center;
+  background-color: var(--deep);
+
+  article{
+    @apply flex flex-col items-center justify-center h-full p-2.5
+  }
+
+  &.square-photos h3{
+    @apply h-full px-3;
+  }
+
+  h3{
+    @apply flex flex-col justify-center xs:px-1;
+    font-family: var(--font-arabic);
+    color: #fff;
+
+    &.text-with-border{
+      @apply xs:border border-dashed border-gray-200 rounded-md;
+
+      span{
+        @apply line-clamp-2;
+      }
+    }
+  }
+
+  p{
+    @apply line-clamp-2 opacity-80;
+  }
+
+  h3,p{
+    @apply lg:opacity-0  transition-all duration-300 relative z-1 lg:translate-y-6;
+  }
+
+  &:hover{
+    h3{
+      @apply opacity-100 translate-y-0;
+    }
+
+    p{
+      @apply opacity-80 translate-y-0;
+    }
+  }
+
+  .two-row &{
+    &:first-child{
+      @apply md:h-full sm:col-span-1 sm:row-span-2 p-5;
+
+      > a{
+        @apply opacity-100;
+      }
+
+      h3{
+        @apply text-2xl leading-12;
+      }
+    }
+  }
+}
+
+/* Banner Block */
+.banner {
+  @media screen and (min-width: 768px) {
+    &:hover {
+      .banner__title {
+        animation: toTopFromBottom 0.9s;
+      }
+
+      .banner__description {
+        animation: delayKeyframe 0.3s, toTopFromBottom 0.9s 0.3s;
+      }
+    }
+  }
+
+  &--fixed{
+    img{
+      @apply w-full object-cover rounded-md border-none block bg-gray-100;
+    }
+  }
+}
+
+/* offers slider */
+.slide--offer-entry {
+  @apply bg-white rounded-md h-36 text-center flex flex-col items-center justify-between text-gray-600 transition duration-500 hover:shadow-default border border-gray-200;
+}
+
+/*
+  Main Links / categories slider (generic twilight)
+*/
+.slide--cat-entry {
+  @apply bg-white rounded-md h-36 p-3 text-center flex flex-col items-center justify-center transition duration-500 hover:shadow-default hover:text-gray-500 border border-gray-100;
+
+  i {
+    @apply inline-block text-primary text-icon-lg mb-4;
+  }
+
+  h2 {
+    @apply font-bold text-sm;
+    color: var(--char);
+  }
+}
